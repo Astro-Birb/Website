@@ -6,7 +6,7 @@ import Home from '../pages/page';
 
 const DynamicPage = ({ page }: { page: string }) => {
   const PageComponent = lazy(() =>
-      import(`../pages/${page}`).catch(() => ({
+      import(`@/pages/${page}`).catch(() => ({
         default: NotFound,
       }))
   );
