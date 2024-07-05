@@ -29,13 +29,18 @@ export default function Home() {
             Power up your Discord server with Astro Birb's advanced features and seamless integrations.
           </p>
           <div className="mt-8 flex space-x-4 justify-center font-bold">
+          <a href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">
             <button className="px-6 py-3 bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-700 transition-colors">
               Invite Bot
             </button>
+          </a>
+          <a href="https://discord.gg/birb" target="_blank" rel="noopener noreferrer">
             <button className="px-6 py-3 bg-transparent border border-white text-white rounded-lg shadow hover:bg-gray-800 transition-colors">
               Support Server
             </button>
-          </div>
+          </a>
+        </div>
+
         </section>
         </main>
       <footer className="w-full bg-zinc-950 py-6 mt-auto glassmorphism">
