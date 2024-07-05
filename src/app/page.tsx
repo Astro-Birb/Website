@@ -1,4 +1,6 @@
+"use client";
 import React from 'react';
+import TypeIt from 'typeit-react';
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800  bg-zinc-950 text-white font-sans">
@@ -8,7 +10,7 @@ export default function Home() {
         <img
           src="https://cdn.discordapp.com/attachments/1119158184003780639/1258802402497265664/astro-logo.svg?ex=66895e98&is=66880d18&hm=edb14a259c85e362e64b1a796ec03f92d61b399200e38c1b10eabcfb1ab05a3c&"
           alt="Astro Birb Logo"
-          className="w-12 h-12 mr-2" 
+          className="w-12 h-12 mr-2"
         />
         Astro Birb
       </h1>
@@ -23,11 +25,11 @@ export default function Home() {
         />
         <section className="text-center">
         <h2 className="text-5xl font-bold">
-          Your Ultimate Discord Bot <span className="animated-gradient">Companion</span>
+          <TypeIt><span className="animated-gradient">Imagine</span> a bot...</TypeIt>
         </h2>
 
           <p className="mt-4 text-lg text-gray-300">
-            Power up your Discord server with Astro Birb's advanced features and seamless integrations.
+            That helps you run your server with <span className="animated-gradient">ease</span>.
           </p>
           <div className="mt-8 flex space-x-4 justify-center font-bold">
           <a href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">

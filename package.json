@@ -11,7 +11,8 @@
   "dependencies": {
     "next": "14.2.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "typeit-react": "^2.7.1"
   },
   "devDependencies": {
     "@types/node": "^20",
