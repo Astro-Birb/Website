@@ -1,4 +1,4 @@
-# Dashboard
+# Website
 
 This is a simple website which i'm not great at doing so it'll look pretty awful 
 
