@@ -2,7 +2,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NotFound from '../pages/notfound';
-import Home from '../pages/page';
+import Home from './page';
 
 const DynamicPage = ({ page }: { page: string }) => {
   const PageComponent = lazy(() =>

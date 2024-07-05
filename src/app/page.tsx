@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import TypeIt from 'typeit-react';
-import '../app/globals.css';
+import './globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
 export default function Home() {
