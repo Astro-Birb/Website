@@ -1,8 +1,8 @@
 import React from 'react';
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 via-black bg-zinc-950 text-white font-sans">
-      <header className="w-full py-5 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white text-center shadow-md fixed top-0 z-50 glassmorphism">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800  bg-zinc-950 text-white font-sans">
+      <header className="w-full py-3 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white text-center shadow-md fixed top-0 z-50 glassmorphism">
       <nav className="flex items-center justify-between w-full px-4">
       <h1 className="text-3xl font-bold flex items-center justify-center">
         <img
@@ -15,16 +15,17 @@ export default function Home() {
     </nav>
 
       </header>
-      <main className="flex-grow flex flex-col items-center justify-center px-4 mt-20">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15">
         <img
           src="https://cdn.discordapp.com/avatars/1113245569490616400/a_c2f162676b5a2be3a835f01fe19c0559.gif?size=1024&width=0&height=256"
           alt="Astro Birb Logo"
           className="w-32 h-32 mb-8 rounded-full"
         />
         <section className="text-center">
-          <h2 className="text-5xl font-bold">
-            Revolutionize Your Workflow with <span className="text-indigo-500">Our Solution</span>
-          </h2>
+        <h2 className="text-5xl font-bold">
+          Your Ultimate Discord Bot <span className="animated-gradient">Companion</span>
+        </h2>
+
           <p className="mt-4 text-lg text-gray-300">
             Power up your Discord server with Astro Birb's advanced features and seamless integrations.
           </p>
@@ -44,7 +45,7 @@ export default function Home() {
         </section>
         </main>
       <footer className="w-full bg-zinc-950 py-6 mt-auto glassmorphism">
-        <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center text-gray-400 text-sm">
+        <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center text-zinc-400 text-sm">
           <p>&copy; 2024 Astro Birb. All rights reserved.</p>
           <div className="mt-2 flex space-x-4">
             <a href="https://docs.astrobirb.dev/legal/terms-of-service" className="hover:text-white">
@@ -55,7 +56,7 @@ export default function Home() {
               Privacy Policy
             </a>
             <span>|</span>
-            <a href="#" className="hover:text-white">
+            <a href="https://discord.gg/birb" className="hover:text-white">
               Contact Us
             </a>
           </div>

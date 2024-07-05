@@ -40,7 +40,25 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.15); 
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); 
 }
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
+.animated-gradient {
+  background: linear-gradient(45deg, #6366f1, #b674f9, #4f46e5, #7933ea);
+  background-size: 200% 200%;
+  animation: gradient-animation 4s ease infinite;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
 
 
 
