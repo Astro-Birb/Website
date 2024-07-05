@@ -28,12 +28,12 @@ export default function RootLayout({
       <html lang="en">
         <body>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home/>} />
           <Route
             path="/:page"
             element={<DynamicPage page={window.location.pathname.slice(1)} />}
           />
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<NotFound/>} />
         </Routes>
         {children}
         </body>
