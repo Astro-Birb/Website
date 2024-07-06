@@ -10,7 +10,7 @@ export default function Home() {
       <Header/>
       <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15">
         <img
-          src="https://cdn.discordapp.com/avatars/1113245569490616400/a_c2f162676b5a2be3a835f01fe19c0559.gif?size=1024&width=0&height=256"
+          src="https://cdn.discordapp.com/avatars/1113245569490616400/a_c2f162676b5a2be3a835f01fe19c0559.gif?size=256&width=0&height=256"
           alt="Astro Birb Logo"
           className="w-32 h-32 mb-8 rounded-full"
         />
