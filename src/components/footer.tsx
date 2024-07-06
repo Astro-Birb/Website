@@ -21,7 +21,7 @@ export default function Footer() {
                 </div>
                 <div className="mt-4 flex space-x-4">
                     <a href="https://github.com/Astro-Birb" className="hover:text-white">
-                        Github
+                        GitHub
                     </a>
                     <span>|</span>
                     <a href="https://ko-fi.com/astrobird" className="hover:text-white">
