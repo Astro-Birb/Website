@@ -3,29 +3,77 @@ import React from 'react';
 import '../app/globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
-
 export default function PrivacyPolicy() {
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800  bg-zinc-950 text-white font-sans">
-            <Header/>
-            <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15">
-                <section className="text-left m-12 pt-14">
-                    <h2 className="text-5xl font-bold">
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
+            <Header />
+            <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15 pt-[100px]">
+                <section className="text-left max-w-4xl mx-auto pt-14">
+                    <h2 className="text-5xl font-bold mb-8">
                         Privacy Policy
                     </h2>
-
-                    <div style={{marginLeft: '20px'}}>
-                        <p className="mt-4 text-lg text-gray-300">
-                            <span className="text-2xl font-bold">1. Introduction</span><br/><br/>Thank you for choosing Astro Birb. This Privacy Policy outlines how we collect, use, disclose, and protect your information. By using our service, you agree to the terms outlined in this policy.<br/><br/>
-                            <span className="text-2xl font-bold">2. Information We Collect</span><br/><br/>User Provided Information:<br/><br/><span className="font-bold">Public User Information:</span><br/>Usernames, Discriminators, IDs and Avatars. <span className="font-bold">Public Guild Information:</span><br/>Server Names, IDs, Icons, Members, Channels and Roles.<br/><br/>
-                            <span className="text-2xl font-bold">2. How We Use Your Information</span><br/><br/><span className="font-bold">We use the collected information for the following purposes:</span><br/><br/><span className="font-bold">•</span> To prevent spam and security issues.<br/><br/><span className="font-bold">•</span> Analyse your service usage.<br/><br/>
-                            <span className="text-2xl font-bold">3. Data Security</span><br/><br/>We prioritize the security of your information and employ industry-standard measures to protect against unauthorized access or disclosure.<br/><br/>
-                            <span className="text-2xl font-bold">4. Third-Party Services</span><br/><br/>Our service utilizes MongoDB Atlas for secure data storage. MongoDB Atlas is a reputable third-party service that employs industry-standard security measures to safeguard your information.<br/><br/>Your information is securely stored on MongoDB servers. MongoDB employs robust security practices to protect against unauthorized access, disclosure, or alteration of your data. MongoDB complies with industry standards and regulations concerning data protection.<br/><br/>
-                            <span className="text-2xl font-bold">5. Children's Privacy</span><br/><br/>Our service is not intended for users under the age of 13. We do not knowingly collect personal information from children. If you believe we have collected the data of a user under the age of 13, please contact us in our support server.<br/><br/>
-                            <span className="text-2xl font-bold">6. Changes to This Privacy Policy</span><br/><br/>We reserve the right to update this Privacy Policy. Any changes will be effective upon posting the revised policy on our website.<br/><br/>
-                            <span className="text-2xl font-bold">7. Contact Us</span><br/><br/>If you have any questions or concerns about this Privacy Policy, please contact us at Astro Birb's Support Server
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">1. Introduction</h3>
+                        <p className="text-lg text-gray-300">
+                            Welcome to Astro Birb! We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our services. By accessing or using Astro Birb, you agree to the terms of this policy. If you have any questions or concerns, please contact us.
                         </p>
-                    </div>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">2. Information We Collect</h3>
+                        <p className="text-lg text-gray-300">
+                            We collect different types of information to provide and improve our service:
+                        </p>
+                        <ul className="list-disc ml-5 text-lg text-gray-300">
+                            <li>
+                                <strong>Public User Information:</strong> Usernames, discriminators, IDs, and avatars, which help us identify and communicate with you.
+                            </li>
+                            <li>
+                                <strong>Public Guild Information:</strong> Server names, IDs, icons, members, channels, and roles, which help us support server-specific functionalities.
+                            </li>
+                        </ul>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">3. How We Use Your Information</h3>
+                        <p className="text-lg text-gray-300">
+                            We use your information to:
+                        </p>
+                        <ul className="list-disc ml-5 text-lg text-gray-300">
+                            <li>Provide and maintain our services.</li>
+                            <li>Improve your experience on Astro Birb.</li>
+                            <li>Ensure the security of our platform and prevent misuse.</li>
+                            <li>Analyze usage to understand and enhance our service offerings.</li>
+                        </ul>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">4. Data Security</h3>
+                        <p className="text-lg text-gray-300">
+                            Your data security is important to us. We implement industry-standard security measures to protect your information from unauthorized access, disclosure, or misuse. We regularly review our practices to enhance the safety of your data.
+                        </p>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">5. Third-Party Services</h3>
+                        <p className="text-lg text-gray-300">
+                            We use <strong>MongoDB Atlas</strong> to securely store your data. MongoDB Atlas is a trusted third-party service known for its robust security measures, ensuring your information is safe and compliant with industry standards and regulations.
+                        </p>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">6. Children's Privacy</h3>
+                        <p className="text-lg text-gray-300">
+                            Astro Birb is not intended for children under the age of 13. We do not knowingly collect personal information from users under 13. If you believe we have inadvertently collected such data, please reach out to us immediately, and we will take steps to delete the information.
+                        </p>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">7. Changes to This Privacy Policy</h3>
+                        <p className="text-lg text-gray-300">
+                            We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, technical, or regulatory reasons. We will notify you of any significant changes by posting the new policy on our website. Your continued use of our services following these changes means you accept the revised policy.
+                        </p>
+                    </article>
+                    <article className="mb-8">
+                        <h3 className="text-2xl font-bold mb-2">8. Contact Us</h3>
+                        <p className="text-lg text-gray-300">
+                            If you have any questions or concerns about this Privacy Policy, please contact us through Astro Birb's Support Server or email us at <a href="mailto:help@astrobirb.com" className="text-blue-400">help@astrobirb.com</a>.
+                        </p>
+                    </article>
                 </section>
             </main>
             <Footer />
