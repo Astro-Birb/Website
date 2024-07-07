@@ -3,7 +3,9 @@ import React from 'react';
 import '../app/globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
+import { useSession } from 'next-auth/react'
 export default function PrivacyPolicy() {
+    const { data: session, status } = useSession();
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
             <Header />
