@@ -5,7 +5,6 @@ import { ReactNode } from "react";
 interface SessionProvidersProps {
   children: ReactNode;
 }
-
 export function SessionProviders({ children }: SessionProvidersProps) {
-    return <SessionProvider>{children}</SessionProvider>;
+  return <SessionProvider>{children}</SessionProvider>;
 }

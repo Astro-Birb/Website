@@ -3,11 +3,11 @@ import React from 'react';
 import '../app/globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
-import { useSession } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react";
 export default function PrivacyPolicy() {
-    const { data: session, status } = useSession();
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
+          <SessionProvider>                
             <Header />
             <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15 pt-[100px]">
                 <section className="text-left max-w-4xl mx-auto pt-14">
@@ -79,6 +79,7 @@ export default function PrivacyPolicy() {
                 </section>
             </main>
             <Footer />
+            </SessionProvider>                  
         </div>
     );
 }

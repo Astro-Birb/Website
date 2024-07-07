@@ -1,6 +1,7 @@
+"use client"
 import React, { ReactNode } from 'react';
-import { SessionProviders } from "./providers";
-
+import { SessionProvider } from "next-auth/react";
+import Header from "../components/header";
 interface RootLayoutProps {
   children: ReactNode;
 }
@@ -20,9 +21,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="theme-color" content="#5b65e8" />        
       </head>
       <body>
-        <SessionProviders>
-          {children}
-        </SessionProviders>
+      <SessionProvider>
+
+        {children}
+      </SessionProvider>
       </body>
     </html>
   );

@@ -3,12 +3,12 @@ import React from 'react';
 import '../app/globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
-import { useSession } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react";
 
 export default function Premium() {
-    const { data: session, status } = useSession();
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
+            <SessionProvider>    
             <Header />
             <main className="flex-grow flex items-center justify-center px-4 mt-15 pt-[100px]">
                 <div className="flex space-x-5">
@@ -103,6 +103,7 @@ export default function Premium() {
 
             </main>
             <Footer />
+            </SessionProvider>                 
         </div>
     );
 }
