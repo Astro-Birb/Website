@@ -6,3 +6,6 @@
 
 ## Contributing
  Contributions are welcome! Please open an issue or submit a pull request. 
+
+
+[![CodeFactor](https://www.codefactor.io/repository/github/astro-birb/website/badge)](https://www.codefactor.io/repository/github/astro-birb/website)
