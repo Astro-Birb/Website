@@ -10,11 +10,14 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^5.2.2",
+    "flowbite-react": "^0.10.1",
     "next": "14.2.4",
+    "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^6.24.1",
     "react-router-dom": "^6.24.1",
+    "tabler-icons-react": "^1.56.0",
     "typeit-react": "^2.7.1"
   },
   "devDependencies": {
