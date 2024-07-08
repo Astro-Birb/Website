@@ -17,7 +17,12 @@ const nextConfig = {
             destination: 'https://docs.astrobirb.dev',
             permanent: true,
             
-          }
+          },
+        {
+          source: '/status',
+          destination: 'https://status.astrobirb.dev',
+          permanent: true,
+        }
         ];
       },
 
