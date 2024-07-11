@@ -1,12 +1,15 @@
-"use client"
+
 import React, { ReactNode } from 'react';
-import { SessionProvider } from "next-auth/react";
+import { SessionProviders } from './providers';
 import Header from "../components/header";
+
 interface RootLayoutProps {
   children: ReactNode;
 }
-export default function RootLayout({ children }: RootLayoutProps) {
+export default async function RootLayout({ children }: RootLayoutProps) {
   return (
+    
+    
     <html lang="en">
       <head>
       <meta charSet="UTF-8" />
@@ -21,10 +24,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
         <meta name="theme-color" content="#5b65e8" />        
       </head>
       <body>
-      <SessionProvider>
 
+      <SessionProviders>
         {children}
-      </SessionProvider>
+
+      </SessionProviders>
       </body>
     </html>
   );

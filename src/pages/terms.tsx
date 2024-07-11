@@ -6,8 +6,7 @@ import Header from "../components/header";
 import { SessionProvider } from "next-auth/react";
 export default function TermsOfService() {
     return (
-        <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
-            <SessionProvider>
+        <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
                 <Header />
                 <main className="flex-grow flex flex-col items-center justify-center px-4 mt-15 pt-[100px]">
                     <section className="text-left max-w-4xl mx-auto pt-14">
@@ -62,7 +61,6 @@ export default function TermsOfService() {
                     </section>
                 </main>
                 <Footer />
-            </SessionProvider>
         </div>
     );
 }

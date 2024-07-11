@@ -3,18 +3,22 @@ import DiscordProvider from 'next-auth/providers/discord'
 
 const clientId = process.env.DISCORD_CLIENT_ID;
 const clientSecret = process.env.DISCORD_CLIENT_SECRET;
+
 // I know this seems useless but it's important
 if (!clientId || !clientSecret) {
   throw new Error('Missing environment variables DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET');
 }
+
 export const authOptions = {
-  
+
   secret: process.env.NEXTAUTH_SECRET,
+  
   providers: [
     DiscordProvider({
       // @ts-ignore
       clientId: process.env.DISCORD_CLIENT_ID,
       // @ts-ignore
+
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
       authorization: {
         params: {
@@ -22,7 +26,6 @@ export const authOptions = {
         },
       },
       profile(profile) {
-        console.log(profile);
         if (profile.avatar === null) {
           const defaultAvatarNumber = parseInt(profile.discriminator) % 5;
           profile.image_url = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarNumber}.png`;
@@ -41,6 +44,7 @@ export const authOptions = {
       },
     }),
   ],
+  
   callbacks: {
     //@ts-ignore
     jwt: async ({ token, account, profile }) => {
@@ -53,21 +57,19 @@ export const authOptions = {
       }
       return token;
     },
-    // @ts-ignore
+    //@ts-ignore
     session: async ({ session, token }) => {
-      // @ts-ignore
       session.accessToken = token.accessToken;
-      // @ts-ignore
       session.refreshToken = token.refreshToken;
-      // @ts-ignore
       session.tokenType = token.tokenType;
-      // @ts-ignore
       session.discordUser = token.profile;
-      // @ts-ignore
-      
       return session;
     },
+
+
+
   },
 };
-// @ts-ignore
-export default NextAuth(authOptions)
+
+//@ts-ignore
+export default NextAuth(authOptions);
