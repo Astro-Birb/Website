@@ -4,37 +4,66 @@ import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 
 import Header from '@/components/header';
+import bitfield from '../utils/bitfield';
 import Footer from '@/components/footer';
+
+interface Guild {
+  id: string;
+  name: string;
+  icon: string;
+  owner: boolean;
+  permissions: string;
+  features: string[];
+}
+
+interface User {
+  id: string;
+  username: string;
+  discriminator: string;
+  bot: boolean | null;
+  system: boolean | null;
+  mfa_enabled: boolean | null;
+  avatar: string;
+  verified: boolean | null;
+  email: string | null;
+  flags: number | null;
+  banner: string | null;
+  accent_color: string | null;
+  premium_type: number | null;
+  public_flags: number | null;
+}
 export default function Guilds() {
-
-    const { data: session, status } = useSession();
-    const [guilds, setGuilds] = useState([]);
-
+  const { data: session, status } = useSession();
+  const [guilds, setGuilds] = useState<Guild[]>([]);
 
   useEffect(() => {
-    const fetchGuilds = async () => {
-      if (session) {
-            //@ts-ignore
-        const access_token = session.accessToken;
+      const fetchGuilds = async () => {
+          if (session) {
+              //@ts-ignore
+              const access_token = session.accessToken;
 
-        const response = await fetch("https://discordapp.com/api/users/@me/guilds", {
-          headers: {
-            Authorization: `Bearer ${access_token}`,
-            "Content-Type": "application/json",
-          },
-        });
+              const response = await fetch("https://discordapp.com/api/users/@me/guilds", {
+                  headers: {
+                      Authorization: `Bearer ${access_token}`,
+                      "Content-Type": "application/json",
+                  },
+              });
 
-        if (response.ok) {
-          const guildsData = await response.json();
-          setGuilds(guildsData);
-        } else {
-          console.error("Failed to fetch guilds:", response.statusText);
-        }
-      }
-    };
+              if (response.ok) {
+                  let guildsData: Guild[] = await response.json();
+                  guildsData = guildsData.filter((guild) => {
+                      const userPermissions = bitfield(parseInt(guild.permissions));
+                      return userPermissions.includes("MANAGE_GUILD");
+                  });
+                  setGuilds(guildsData);
+              } else {
+                  console.error("Failed to fetch guilds:", response.statusText);
+              }
+          }
+      };
 
-    fetchGuilds();
-  }, [session]); 
+      fetchGuilds();
+  }, [session]);
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
@@ -47,7 +76,6 @@ export default function Guilds() {
                             <div className="flex justify-end px-4 pt-4" />
                             <div className="flex flex-col items-center pb-6">
                                 <img
-
                                     className="w-24 h-24 mb-3 rounded-full shadow-lg"
                                     src={guild.icon ? `https://cdn.discordapp.com/icons/${guild.id}/${guild.icon}.png` : '/default.png'}
                                     alt={`${guild.name} icon`}
@@ -70,6 +98,5 @@ export default function Guilds() {
         </main>
         <Footer />
     </div>
-);
-
+  );
 }
