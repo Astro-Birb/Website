@@ -10,7 +10,7 @@ export default function Home() {
       <Header />
       <main className="flex-grow">
 
-        <div className="flex  flex-col items-center justify-center h-screen px-4 scale-125">
+       <div className="flex flex-col items-center justify-center h-screen px-4 sm:scale-75 md:scale-125">
           <img
             src="/spinny.gif"
             alt="Astro Birb Logo"
