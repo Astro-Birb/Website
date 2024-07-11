@@ -1,9 +1,8 @@
 "use client";
-import React from 'react';
 import TypeIt from 'typeit-react';
-import './globals.css';
 import Footer from '../components/footer';
 import Header from "../components/header";
+import './globals.css';
 
 export default function Home() {
   return (
@@ -52,7 +51,7 @@ export default function Home() {
         </div>
 
 
-        <section className="mt-12 w-full px-6">
+        <section className="mt-12 w-full px-6 ">
           <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div className="max-w-screen-md mb-8 lg:mb-16">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white sm:text-5xl lg:text-6xl">
@@ -177,11 +176,11 @@ export default function Home() {
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
             <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
               <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our team</h2>
-              <p className="font-light text-gray-500 sm:text-xl dark:text-gray-300">
+              <p className="font-light text-gray-500 sm:text-xl dark:text-gray-300 ">
                 As a team of dedicated staff members at Astro Birb, our primary goal is to ensure we deliver the best possible experience for our users.
               </p>
             </div>
-            <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ">
               <div className="text-center text-gray-500 dark:text-gray-400">
                 <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/bugsy.png" alt="Bonnie Avatar"></img>
                 <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
@@ -339,22 +338,21 @@ export default function Home() {
         </section>
 
         <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div className="max-w-screen-md">
-            <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's find more that brings us together.</h2>
-            <p className="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-              Astro Birb is a project that is constantly evolving. We are always looking for ways to improve our bot and make it more useful for our users. If you have any feedback or suggestions, please don't hesitate to contact us.
-            </p>
-            <div className="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 sm:px-6 sm:py-3 lg:text-lg lg:py-4 lg:px-8">
-              <a href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands" className="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
-                Get Started
-              </a>
-              <a href="https://discord.gg/DhWdgfh3hN" className="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-
-                Support Server
-              </a>
-            </div>
+        <div className="max-w-screen-md">
+          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Let's find more that brings us together.</h2>
+          <p className="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">
+            Astro Birb is a project that is constantly evolving. We are always looking for ways to improve our bot and make it more useful for our users. If you have any feedback or suggestions, please don't hesitate to contact us.
+          </p>
+          <div className="flex gap-3 items-center justify-start ">
+            <a href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands" className="inline-flex items-center justify-center px-6 py-3 text-base font-medium glow text-white  bg-indigo-500 rounded-lg shadow hover:bg-indigo-700 transition-colors">
+              Get Started
+            </a>
+            <a href="https://discord.gg/DhWdgfh3hN" className="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-gray-900 border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+              Support Server
+            </a>
           </div>
         </div>
+      </div>
       </main>
       <Footer />
     </div>
