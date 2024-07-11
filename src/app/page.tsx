@@ -175,7 +175,7 @@ export default function Home() {
         <section className="">
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
             <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
-              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our team</h2>
+              <h2 className="mb-4 text-4xl tracking-tight font-bold text-gray-900 scale-125 dark:text-white">Our team</h2>
               <p className="font-light text-gray-500 sm:text-xl dark:text-gray-300 ">
                 As a team of dedicated staff members at Astro Birb, our primary goal is to ensure we deliver the best possible experience for our users.
               </p>
