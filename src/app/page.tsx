@@ -55,10 +55,10 @@ export default function Home() {
         <section className="mt-12 w-full px-6">
           <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div className="max-w-screen-md mb-8 lg:mb-16">
-              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
+              <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white sm:text-5xl lg:text-6xl">
                 Designed for staff teams like yours
               </h2>
-              <p className="text-gray-300 sm:text-xl">
+              <p className="text-gray-300 sm:text-xl lg:text-2xl">
                 Here at Astro Birb, we streamline the management of punishments and staff with robust features tailored for handling infractions, promotions, and monitoring message quotas effortlessly.
               </p>
             </div>
@@ -177,13 +177,13 @@ export default function Home() {
           <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-6">
               <div className="mx-auto mb-8 max-w-screen-sm lg:mb-16">
                   <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our team</h2>
-                  <p className="font-light text-gray-500 sm:text-xl dark:text-gray-400">
+                  <p className="font-light text-gray-500 sm:text-xl dark:text-gray-300">
                   As a team of dedicated staff members at Astro Birb, our primary goal is to ensure we deliver the best possible experience for our users. 
               </p>
               </div> 
               <div className="grid gap-8 lg:gap-16 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/bugsy.png" alt="Bonnie Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/bugsy.png" alt="Bonnie Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Bugsy</a>
                       </h3>
@@ -204,7 +204,7 @@ export default function Home() {
                       </ul>
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/markination.png" alt="Helene Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/markination.png" alt="Helene Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">markination</a>
                       </h3>
@@ -212,7 +212,7 @@ export default function Home() {
 
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/zee.png" alt="Jese Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/zee.png" alt="Jese Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">zee</a>
                       </h3>
@@ -220,7 +220,7 @@ export default function Home() {
 
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/toxic.gif" alt="Joseph Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/toxic.gif" alt="Joseph Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Toxic</a>
                       </h3>
@@ -228,7 +228,7 @@ export default function Home() {
                      
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/trey.png" alt="Sofia Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/trey.png" alt="Sofia Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Trey</a>
                       </h3>
@@ -236,7 +236,7 @@ export default function Home() {
 
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/cloudy.png" alt="Leslie Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/cloudy.png" alt="Leslie Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Cloudy</a>
                       </h3>
@@ -244,7 +244,7 @@ export default function Home() {
 
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/foxhast.png" alt="Michael Avatar"></img>
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/foxhast.png" alt="Michael Avatar"></img>
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Foxhast</a>
                       </h3>
@@ -252,7 +252,7 @@ export default function Home() {
 
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/alexii.png" alt="Neil Avatar"></img> 
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/alexii.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Aℓєxii</a>
                       </h3>
@@ -262,7 +262,7 @@ export default function Home() {
                       </ul>
                   </div>
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/limited.png" alt="Neil Avatar"></img> 
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/limited.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">ImLimited</a>
                       </h3>
@@ -272,7 +272,7 @@ export default function Home() {
                       </ul>
                   </div>               
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/alex.png" alt="Neil Avatar"></img> 
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/alex.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Alex†</a>
                       </h3>
@@ -282,7 +282,7 @@ export default function Home() {
                       </ul>
                   </div>           
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/lavoxiy.png" alt="Neil Avatar"></img> 
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/lavoxiy.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">Lavoxiy</a>
                       </h3>
@@ -292,7 +292,7 @@ export default function Home() {
                       </ul>
                   </div>    
                   <div className="text-center text-gray-500 dark:text-gray-400">
-                      <img className="mx-auto mb-4 w-36 h-36 rounded-full" src="/team/erik.png" alt="Neil Avatar"></img> 
+                      <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/erik.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                           <a href="#">erekle4329</a>
                       </h3>
@@ -311,7 +311,7 @@ export default function Home() {
             <p className="mb-8 font-light text-gray-500 sm:text-xl dark:text-gray-400">
                 Astro Birb is a project that is constantly evolving. We are always looking for ways to improve our bot and make it more useful for our users. If you have any feedback or suggestions, please don't hesitate to contact us.
             </p>
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+            <div className="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900 sm:px-6 sm:py-3 lg:text-lg lg:py-4 lg:px-8">
                 <a href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands" className="inline-flex items-center justify-center px-4 py-2.5 text-base font-medium text-center text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                     Get Started
                 </a>
