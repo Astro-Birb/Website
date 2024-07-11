@@ -28,7 +28,7 @@ export default function Home() {
               Invite Bot
             </button>
           </a>
-          <a href="https://discord.gg/birb" target="_blank" rel="noopener noreferrer">
+          <a href="https://discord.gg/DhWdgfh3hN" target="_blank" rel="noopener noreferrer">
             <button className="px-6 py-3 bg-transparent border border-white text-white rounded-lg shadow hover:bg-gray-800 transition-colors">
               Support Server
             </button>

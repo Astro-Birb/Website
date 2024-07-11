@@ -14,7 +14,7 @@ export default function Footer() {
                         Privacy Policy
                     </a>
                     <span>|</span>
-                    <a href="https://discord.gg/birb" className="hover:text-white">
+                    <a href="https://discord.gg/DhWdgfh3hN" className="hover:text-white">
                         Contact Us
                     </a>
                 </div>
