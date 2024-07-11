@@ -7,15 +7,15 @@ import Header from "../components/header";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-800 to-zinc-950 text-white font-sans">
+    <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
       <Header />
       <main className="flex-grow">
 
-        <div className="flex flex-col items-center justify-center h-screen px-4">
+        <div className="flex  flex-col items-center justify-center h-screen px-4 scale-125">
           <img
             src="/spinny.gif"
             alt="Astro Birb Logo"
-            className="w-32 h-32 mb-8 rounded-full"
+            className="w-32 h-32 mb-8 rounded-full glow"
           />
           <section className="text-center">
             <h2 className="text-5xl font-bold">
@@ -33,7 +33,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <button className="px-6 py-3 bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-700 transition-colors">
+                <button className="px-6 py-3 glow bg-indigo-500 text-white rounded-lg shadow hover:bg-indigo-700 transition-colors">
                   Invite Bot
                 </button>
               </a>

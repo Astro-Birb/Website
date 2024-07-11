@@ -21,6 +21,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: rgb(var(--foreground-rgb));
+  overflow-x: hidden;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -64,7 +65,10 @@ body {
 
 
 
-
+.glow {
+  filter: drop-shadow(0 0 2px #5b65e8);
+  animation: glow 2s ease-in-out infinite;
+ }
 
 .scrollable-section {
   max-height: 400px; 
