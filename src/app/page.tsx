@@ -281,7 +281,7 @@ export default function Home() {
                   <div className="text-center text-gray-500 dark:text-gray-400">
                       <img className="mx-auto mb-4 w-36 h-36 rounded-full sm:w-48 sm:h-48 lg:w-56 lg:h-56" src="/team/limited.png" alt="Neil Avatar"></img> 
                       <h3 className="mb-1 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                          <a href="#">ImLimited</a>
+                          <a href="#">ImLimiteds</a>
                       </h3>
                       <p>Support</p>
                       <ul className="flex justify-center mt-4 space-x-4">
