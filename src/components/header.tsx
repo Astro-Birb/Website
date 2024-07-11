@@ -23,7 +23,7 @@ export default function Header() {
     };
 
     return (
-        <header className="w-full py-3 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white text-center shadow-md fixed top-0 z-50 glassmorphism">
+        <header className="w-full py-3 z-1 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white text-center shadow-md fixed top-0 z-50 glassmorphism">
             <nav className="flex items-center justify-between w-full px-4">
                 <a href="/" className="text-3xl font-bold flex items-center justify-center">
                     <img
