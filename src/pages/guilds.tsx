@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 import Header from '@/components/header';
 import bitfield from '../utils/bitfield';
@@ -35,12 +36,16 @@ interface User {
 export default function Guilds() {
   const { data: session, status } = useSession();
   const [guilds, setGuilds] = useState<Guild[]>([]);
-
+  const router = useRouter();
+  if (status === 'unauthenticated') {
+    router.push('/api/auth/signin'); 
+  }
   useEffect(() => {
       const fetchGuilds = async () => {
           if (session) {
               //@ts-ignore
               const access_token = session.accessToken;
+              
 
               const response = await fetch("https://discordapp.com/api/users/@me/guilds", {
                   headers: {
