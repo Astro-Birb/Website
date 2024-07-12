@@ -25,6 +25,8 @@ export const authOptions = {
           scope: "identify guilds",
         },
       },
+            // @ts-ignore
+
       profile(profile) {
         if (profile.avatar === null) {
           const defaultAvatarNumber = parseInt(profile.discriminator) % 5;
