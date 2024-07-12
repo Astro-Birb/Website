@@ -11,10 +11,6 @@ export default async function guilds(req, res) {
     const session = await getSession({ req });
     console.log(session)
 
-    if (!session) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
-
     //@ts-ignore
     const userAccessToken = session.accessToken;
 
