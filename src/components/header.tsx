@@ -6,8 +6,21 @@ import { LayoutDashboard, Settings, Logout } from 'tabler-icons-react';
 interface UserSession extends Session {
     user: {
         name: string;
-        email: string;
         image: string;
+        id: string,
+        username: string,
+        discriminator: string,
+        bot: Boolean | null,
+        system: Boolean | null,
+        mfa_enabled: Boolean | null,
+        avatar: string,
+        verified: Boolean | null,
+        email: string | null,
+        flags: Number | null,
+        banner: string | null,
+        accent_color: string | null,
+        premium_type: Number | null,
+        public_flags: Number | null,
     };
 }
 

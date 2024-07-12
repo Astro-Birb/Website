@@ -1,5 +1,5 @@
 import permissions from '@/utils/bitfield';
-import { getSession } from 'next-auth/react';
+import { getToken } from 'next-auth/jwt';
 
 const API_KEY = process.env.API_KEY;
 const ASTROBIRB_API_URL = process.env.ASTROBIRB_API_URL;
@@ -8,11 +8,11 @@ const ASTROBIRB_API_URL = process.env.ASTROBIRB_API_URL;
 //@ts-ignore
 export default async function guilds(req, res) {
   try {
-    const session = await getSession({ req });
-    console.log(session)
+    const session = await getToken({req, secret: process.env.NEXTAUTH_SECRET});
+
 
     if (!session) {
-      return res.status(401).json({ error: 'Unauthorized (can not get this working )' });
+      return res.status(401).json({ error: 'Unauthorized' });
     }
 
     //@ts-ignore
