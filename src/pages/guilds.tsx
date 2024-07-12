@@ -32,7 +32,12 @@ export default function Guilds() {
         setIsLoading(true); 
 
         try {
-          const response = await fetch('/api/discord/guild');
+          const response = await fetch('/api/discord/guild', {
+            headers: {
+              //@ts-ignore
+              Authorization: `Bearer ${session.accessToken}`,
+            },
+          });
 
           if (response.ok) {
             const guildsData: Guild[] = await response.json();
