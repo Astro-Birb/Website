@@ -9,6 +9,7 @@ const ASTROBIRB_API_URL = process.env.ASTROBIRB_API_URL;
 export default async function guilds(req, res) {
   try {
     const session = await getSession({ req });
+    console.log(session)
 
     if (!session) {
       return res.status(401).json({ error: 'Unauthorized' });
