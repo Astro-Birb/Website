@@ -33,10 +33,11 @@ export default function Guilds() {
 
         try {
           const response = await fetch('/api/discord/guild', {
+            
             headers: {
               //@ts-ignore
-              Authorization: `Bearer ${session.accessToken}`,
-            },
+              'Authorization': `Bearer ${session.accessToken}`
+            }
           });
 
           if (response.ok) {

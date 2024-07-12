@@ -13,6 +13,7 @@ export default async function guilds(req, res) {
     if (!session) {
       return res.status(401).json({ error: 'Unauthorized' });
     }
+
     //@ts-ignore
     const userAccessToken = session.accessToken;
 
