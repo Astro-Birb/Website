@@ -34,6 +34,7 @@ export default async function guilds(req, res) {
       headers: {
         "Content-Type": "application/json",
         "X-API-KEY": API_KEY,
+        Authorization: API_KEY,
       },
     });
 
