@@ -36,7 +36,7 @@ export default function Guilds() {
             
             headers: {
               //@ts-ignore
-              'Authorization': `Bearer ${session.accessToken}`
+              'authorization': `Bearer ${session.accessToken}`
             }
           });
 
