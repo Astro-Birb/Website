@@ -34,6 +34,12 @@ const GuildDashboard = () => {
         }
     }, [guildid]);
 
+    if (!guild) {
+        return router.push('/guilds');
+    }
+
+    
+
     if (status === 'loading' || isLoading) {
         return (
             <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 z-50">
