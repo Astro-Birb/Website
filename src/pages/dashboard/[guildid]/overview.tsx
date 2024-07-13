@@ -1,42 +1,57 @@
-
 import React, { useState, useEffect } from 'react';
 import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import { redirect} from 'next/navigation';
+
+
+
+
 
 const GuildDashboard = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
     const { guildid } = router.query;
     const [guild, setGuild] = useState(null);
-    const [isLoading, setIsLoading] = useState(true); 
-
+    const [prefix, setPrefix] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchGuildData = async () => {
             try {
                 const response = await fetch(`/api/discord/guild/${guildid}`);
-                if (!response.ok)
-                {
+                if (!response.ok) {
                     router.push('/guilds');
                     return;
                 }
                 if (response.ok) {
                     const data = await response.json();
-                    setGuild(data); 
+                    setGuild(data);
                 } else {
                     console.error('Failed to fetch guild data');
                 }
             } catch (error) {
                 console.error('Error fetching guild data:', error);
             } finally {
-                setIsLoading(false); 
+                setIsLoading(false);
+            }
+        };
+        const fetchPrefix = async () => {
+            try {
+                const response = await fetch(`/api/data/${guildid}/prefix`);
+                if (!response.ok) {
+                    console.error('Failed to fetch prefix data');
+                    return;
+                }
+                const data = await response.json();
+                setPrefix(data.prefix.prefix);
+            } catch (error) {
+                console.error('Error fetching prefix data:', error);
             }
         };
 
         if (guildid) {
             fetchGuildData();
+            fetchPrefix();
         }
     }, [guildid]);
 
@@ -44,7 +59,7 @@ const GuildDashboard = () => {
 
 
 
-    
+
 
     if (status === 'loading' || isLoading) {
         return (
@@ -64,15 +79,31 @@ const GuildDashboard = () => {
     if (status === 'unauthenticated') {
         router.push('/api/auth/signin');
         return null;
-      }
+    }
     console.log(guild)
 
     return (
         <main>
-            
             <Header />
-            <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans relative">
+            <div className="flex min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
                 <Sidebar Guild={guild} />
+                <div className="flex-1 p-6 relative">
+                    <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-zinc-900 dark:border-zinc-700 relative" style={{ top: '80px', left: '250px' }}>
+                        <a href="#">
+                            <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Bot Prefix</h5>
+                        </a>
+                        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">This is where you set the bot's prefix. You can run commands like !!infract.</p>
+                        <div>
+                            <label htmlFor="prefix-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prefix:</label>
+                            <input
+                                type="text"
+                                id="prefix-input"
+                                value={prefix ?? ''}
+                                className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     );

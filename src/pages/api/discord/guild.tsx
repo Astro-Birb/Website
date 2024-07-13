@@ -8,7 +8,7 @@ const ASTROBIRB_API_URL = process.env.ASTROBIRB_API_URL;
 //@ts-ignore
 export default async function guilds(req, res) {
   try {
-    const session = await getToken({req, secret: process.env.NEXTAUTH_SECRET});
+    const session = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
 
 
     if (!session) {

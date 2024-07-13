@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const guildsResponse = await fetch(`https://discord.com/api/users/@me/guilds`, {
             headers: {
-                Authorization: `Bearer ${session.accessToken}`, 
+                Authorization: `Bearer ${session.accessToken}`,
             },
         });
 
@@ -30,11 +30,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if (!(userGuild.permissions & 0x20)) {
             return res.status(403).json({ error: "Unauthorized: User does not have MANAGE_GUILD permission" });
         }
-       
+
 
         const guildResponse = await fetch(`https://discord.com/api/guilds/${guildid}`, {
             headers: {
-                Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`, 
+                Authorization: `Bot ${process.env.DISCORD_BOT_TOKEN}`,
             },
         });
 
