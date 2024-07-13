@@ -3,9 +3,7 @@ import { useRouter } from 'next/router';
 
 //@ts-ignore
 export default function Sidebar({ Guild }) {
-
     const router = useRouter();
-    console.log(`guild: ${Guild}`)
     if (!Guild) return null;
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef(null);
@@ -88,37 +86,17 @@ export default function Sidebar({ Guild }) {
                         </div>
                         <li>
                             <a
-                                onClick={() => handleClick("overview")}
-                                type='button'
-                                className="onclickbutton flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-                            >
-                                <svg
-                                    className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                                    aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    viewBox="0 0 22 21"
-                                >
-                                    <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z" />
-                                    <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z" />
-                                </svg>
-                                <span className="ms-3">Overview</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a
                                 onClick={() => handleClick("infractions")}
                                 type='button'
                                 className="onclickbutton flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                             >
                                 <svg
-
                                     xmlns="http://www.w3.org/2000/svg"
-                                    height="2px"
                                     viewBox="0 -960 960 960"
-                                    width="48px"
                                     fill="#9ca3af"
-                                    className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                                    width="24"
+                                    height="24"
                                 >
                                     <path d="M743-295 246-793l234-88 320 119v238q0 59-15 117.5T743-295Zm67 238L670-195q-44 44-90 72T480-81q-143-39-231.5-164.5T160-524v-183L55-812l43-43 755 755-43 43Z" />
                                 </svg>
@@ -132,11 +110,19 @@ export default function Sidebar({ Guild }) {
                                 type='button'
                                 className="onclickbutton flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                             >
-                                <svg className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" xmlns="http://www.w3.org/2000/svg" height="2px" viewBox="0 -960 960 960" fill="#9ca3af" width="48px"><path d="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm-200 0q-139-35-229.5-159.5T160-516v-244l320-120 320 120v227q-26-13-58.5-20t-61.5-7q-116 0-198 82t-82 198q0 62 23.5 112T483-81q-1 0-1.5.5t-1.5.5Zm180-80h40v-100h100v-40H700v-100h-40v100H560v40h100v100Z"/></svg>
-
+                                <svg 
+                                    className="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" 
+                                    xmlns="http://www.w3.org/2000/svg" 
+                                    viewBox="0 -960 960 960" 
+                                    fill="#9ca3af" 
+                                    width="24" 
+                                    height="24">
+                                    <path d="M680-80q-83 0-141.5-58.5T480-280q0-83 58.5-141.5T680-480q83 0 141.5 58.5T880-280q0 83-58.5 141.5T680-80Zm-200 0q-139-35-229.5-159.5T160-516v-244l320-120 320 120v227q-26-13-58.5-20t-61.5-7q-116 0-198 82t-82 198q0 62 23.5 112T483-81q-1 0-1.5.5t-1.5.5Zm180-80h40v-100h100v-40H700v-100h-40v100H560v40h100v100Z"/>
+                                </svg>
                                 <span className="ms-3 flex-1">Promotions</span>
                             </a>
                         </li>
+
                         <li>
                             <a
                                 href="#"
