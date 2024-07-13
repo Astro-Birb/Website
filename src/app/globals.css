@@ -95,14 +95,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #6b7280; 
 }
-.fontering {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 510;
-  font-size: 1.1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; 
-  color: #d2d4db;
+
+.onclickbutton{
+  cursor:pointer;
 }
 
 

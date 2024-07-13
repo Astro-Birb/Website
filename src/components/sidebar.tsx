@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 //@ts-ignore
 export default function Sidebar({Guild}) {
+    const router = useRouter();
     console.log(`guild: ${Guild}`)
     if (!Guild) return null;
 
@@ -18,7 +20,12 @@ export default function Sidebar({Guild}) {
             setIsOpen(false);
         }
     };
-
+    //@ts-ignore
+    const handleClick = (page) => {
+        router.push({
+            pathname: `/dashboard/${Guild.id}/${page}`,
+        });
+    };
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
 
@@ -74,9 +81,10 @@ export default function Sidebar({Guild}) {
                         </div>
                     </div>                        
                         <li>
-                            <a
-                                href="#"
-                                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                           <a
+                                onClick={() => handleClick("overview")}
+                                type='button'
+                                className="onclickbutton flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                             >
                                 <svg
                                     className="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
@@ -93,8 +101,9 @@ export default function Sidebar({Guild}) {
                         </li>
                         <li>
                             <a
-                                href="#"
-                                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                                onClick={() => handleClick("infractions")}
+                                type='button'
+                                className="onclickbutton flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
                             >
                                 <svg
 
