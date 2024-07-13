@@ -1,8 +1,8 @@
-"use client";
 import React, { useState } from "react";
 import { signIn, signOut, useSession } from 'next-auth/react';
 import { Session } from 'next-auth';
 import { LayoutDashboard, Settings, Logout } from 'tabler-icons-react';
+
 interface UserSession extends Session {
     user: {
         name: string;
@@ -24,7 +24,7 @@ interface UserSession extends Session {
     };
 }
 
-export default function Header() {
+const Header = () => {
     const { data: session, status } = useSession();
     const user = session as UserSession;
     const loading = status === 'loading';
@@ -38,13 +38,13 @@ export default function Header() {
     return (
         <header className="w-full py-3 z-1 bg-opacity-50 backdrop-filter backdrop-blur-lg text-white text-center shadow-md fixed top-0 z-50 glassmorphism">
             <nav className="flex items-center justify-between w-full px-4">
-                <a href="/" className="text-3xl font-bold flex items-center justify-center">
+                <a href="/" className="flex items-center justify-center">
                     <img
                         src="/astro-logo.svg"
                         alt="Astro Birb Logo"
                         className="w-12 h-12 mr-2"
                     />
-                    Astro Birb
+                    <span className="hidden sm:block text-3xl font-bold">Astro Birb</span>
                 </a>
                 {!loading && (
                     <div className="flex items-center relative">
@@ -96,4 +96,6 @@ export default function Header() {
             </nav>
         </header>
     );
-}
+};
+
+export default Header;
