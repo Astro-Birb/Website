@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import { redirect} from 'next/navigation';
 
 const GuildDashboard = () => {
     const { data: session, status } = useSession();
@@ -15,7 +17,11 @@ const GuildDashboard = () => {
         const fetchGuildData = async () => {
             try {
                 const response = await fetch(`/api/discord/guild/${guildid}`);
-               
+                if (!response.ok)
+                {
+                    router.push('/guilds');
+                    return;
+                }
                 if (response.ok) {
                     const data = await response.json();
                     setGuild(data); 
@@ -34,9 +40,9 @@ const GuildDashboard = () => {
         }
     }, [guildid]);
 
-    if (!guild) {
-        return router.push('/guilds');
-    }
+
+
+
 
     
 
@@ -56,13 +62,9 @@ const GuildDashboard = () => {
 
 
     if (status === 'unauthenticated') {
-        return {
-            redirect: {
-                destination: '/login',
-                permanent: false,
-            },
-        };
-    }
+        router.push('/api/auth/signin');
+        return null;
+      }
     console.log(guild)
 
     return (

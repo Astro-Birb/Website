@@ -26,7 +26,7 @@ export default async function guilds(req, res) {
     });
 
     if (!userGuildsResponse.ok) {
-      throw new Error("Failed to fetch user guilds");
+      res.status(500).json({ error: "Failed to fetch user guilds" });
     }
 
     const userGuilds = await userGuildsResponse.json();
@@ -41,7 +41,7 @@ export default async function guilds(req, res) {
     });
 
     if (!botguildsResponse.ok) {
-      throw new Error(`Failed to fetch bot guilds: ${botguildsResponse.status}`);
+      res.status(500).json({ error: "Failed to fetch bot guilds" });
     }
 
     const botGuildsData = await botguildsResponse.json();
