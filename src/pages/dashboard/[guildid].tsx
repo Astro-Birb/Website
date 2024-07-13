@@ -94,7 +94,7 @@ const GuildDashboard = () => {
                         </a>
                         <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">This is where you set the bot's prefix. You can run commands like !!infract.</p>
                         <div>
-                            <label htmlFor="prefix-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Prefix:</label>
+                            <label htmlFor="prefix-input" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"></label>
                             <input
                                 type="text"
                                 id="prefix-input"
