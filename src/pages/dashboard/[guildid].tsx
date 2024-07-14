@@ -3,17 +3,23 @@ import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
-import DropdownSearch from '@/components/dropdown'; // Adjust the import path as necessary
+import DropdownSearch from '@/components/dropdown';
+
+interface Role {
+    id: number;
+    name: string;
+
+}
 
 const GuildDashboard = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
     const { guildid } = router.query;
-    const [guild, setGuild] = useState(null);
-    const [prefix, setPrefix] = useState(null);
-    const [roles, setRoles] = useState([]);
-    const [staffRoles, setStaffRoles] = useState([]);
-    const [adminRoles, setAdminRoles] = useState([]);
+    const [guild, setGuild] = useState<Role | null>(null);
+    const [prefix, setPrefix] = useState<string | null>(null);
+    const [roles, setRoles] = useState<Role[]>([]);
+    const [staffRoles, setStaffRoles] = useState<Role[]>([]);
+    const [adminRoles, setAdminRoles] = useState<Role[]>([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -74,7 +80,6 @@ const GuildDashboard = () => {
         router.push('/api/auth/signin');
         return null;
     }
-    console.log(guild)
 
     return (
         <main>
@@ -94,8 +99,7 @@ const GuildDashboard = () => {
                                     <input
                                         type="text"
                                         id="prefix-input"
-
-                                        defaultValue={prefix}
+                                        defaultValue={prefix || ''}
                                         onChange={(e) => setPrefix(e.target.value)}
                                         className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     />
@@ -130,7 +134,6 @@ const GuildDashboard = () => {
                                 />
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

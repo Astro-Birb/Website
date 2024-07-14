@@ -1,11 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 //@ts-ignore
 
-const DropdownSearch = ({ label, roles, selectedRoles, setSelectedRoles }) => {
+interface Role {
+    id: number;
+    name: string;
+}
+
+interface DropdownSearchProps {
+    label: string;
+    roles: Role[];
+    selectedRoles: Role[];
+    setSelectedRoles: React.Dispatch<React.SetStateAction<Role[]>>;
+}
+
+
+const DropdownSearch: React.FC<DropdownSearchProps> = ({ label, roles, selectedRoles, setSelectedRoles }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const dropdownRef = useRef(null);
-//@ts-ignore
+    //@ts-ignore
     const filteredRoles = roles.filter(role =>
         role.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
@@ -19,7 +32,7 @@ const DropdownSearch = ({ label, roles, selectedRoles, setSelectedRoles }) => {
             setSelectedRoles([...selectedRoles, role]);
         }
     };
-//@ts-ignore
+    //@ts-ignore
     const handleClickOutside = (event) => {
         //@ts-ignore
         if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -43,7 +56,7 @@ const DropdownSearch = ({ label, roles, selectedRoles, setSelectedRoles }) => {
             >
                 {selectedRoles.length > 0 ? (
                     <div className="flex flex-wrap">
-                        
+
                         {selectedRoles.map(role => (
                             <span key={role.id} className="flex items-center m-1 p-1 bg-zinc-600 text-white text-sm rounded">
                                 {role.name}
