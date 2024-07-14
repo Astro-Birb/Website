@@ -6,7 +6,7 @@ import './globals.css';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
+    <div className="overflow-auto flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans">
       <Header />
       <main className="flex-grow">
 
