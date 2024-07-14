@@ -77,17 +77,17 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 8px; 
-  z-index: 1;
+  display: none;
 }
+
 
 
 ::-webkit-scrollbar-track {
-  background: #171e27;
+  background: #2e374300;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+  background: #263f6400;
   border-radius: 4px; 
 }
 
@@ -103,8 +103,8 @@ body {
 @media (max-width: 1920px){
   .dashtab {
     position: relative;
-    left: 300px;
-    top: 100px;
+    left: 280px;
+    top: 90px;
 
   }
   
@@ -112,8 +112,8 @@ body {
 
 @media (max-width: 680px) {
   .dashtab {
-    left: -10px; 
-    top: 130px; 
+    left: 0px; 
+    top: 125px; 
 
   }
 }

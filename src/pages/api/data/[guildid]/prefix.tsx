@@ -12,11 +12,6 @@ export default async function handler(req, res) {
     const { guildid } = req.query;
      //@ts-ignore
 
-     const guilds = await fetchGuilds(session.accessToken);
-     const hasAccess = guilds.some(guild => guild.id === guildid);
-     if (!hasAccess) {
-       return res.status(403).json({ error: "You don't have access to this guild." });
-     }
 
     client = await MongoClient.connect(process.env.MONGODB_URI, {
       serverApi: ServerApiVersion.v1,

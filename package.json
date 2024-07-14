@@ -2,7 +2,6 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "child_process": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,9 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.2.2",
     "child_process": "^1.0.2",
-    "cookie": "^0.6.0",
     "flowbite-react": "^0.10.1",
     "mongodb": "^6.8.0",
     "next": "^14.2.5",
@@ -22,6 +19,7 @@
     "react-router": "^6.24.1",
     "react-router-dom": "^6.24.1",
     "tabler-icons-react": "^1.56.0",
+    "turbopack": "^0.0.1",
     "typeit-react": "^2.7.1"
   },
   "devDependencies": {

@@ -18,7 +18,7 @@ export const authOptions = {
       clientSecret: clientSecret,
       authorization: {
         params: {
-          scope: 'identify guilds',
+          scope: 'identify guilds guilds.members.read',
         },
       },
       profile(profile) {
