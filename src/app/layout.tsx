@@ -1,7 +1,6 @@
 
 import React, { ReactNode } from 'react';
 import { SessionProviders } from './providers';
-import Header from "../components/header";
 import './globals.css';
 interface RootLayoutProps {
   children: ReactNode;

@@ -100,4 +100,24 @@ body {
   cursor:pointer;
 }
 
+@media (max-width: 1920px){
+  .dashtab {
+    position: relative;
+    left: 300px;
+    top: 100px;
+
+  }
+  
+}
+
+@media (max-width: 680px) {
+  .dashtab {
+    left: -250px; 
+    top: 130px; 
+
+    width: 1000px;
+
+  }
+}
+
 
