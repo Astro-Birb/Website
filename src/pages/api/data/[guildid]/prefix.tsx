@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion, Long } from 'mongodb';
 import { getToken } from 'next-auth/jwt';
-import {fetchGuilds} from '../../../../utils/functions'
+import {fetchGuilds} from '../../../../app/function'
 //@ts-ignore
 export default async function handler(req, res) {
   let client;
