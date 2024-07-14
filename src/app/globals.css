@@ -112,7 +112,7 @@ body {
 
 @media (max-width: 680px) {
   .dashtab {
-    left: -250px; 
+    left: -10px; 
     top: 130px; 
 
   }
