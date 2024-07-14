@@ -1,6 +1,6 @@
 import { MongoClient, ServerApiVersion, Long } from 'mongodb';
 import { getToken } from 'next-auth/jwt';
-   
+import {fetchGuilds} from '../../../../utils/functions'
 //@ts-ignore
 export default async function handler(req, res) {
   let client;
@@ -10,7 +10,14 @@ export default async function handler(req, res) {
       return res.status(401).json({ error: "Unauthorized" });
     }
     const { guildid } = req.query;
-        //@ts-ignore
+     //@ts-ignore
+
+     const guilds = await fetchGuilds(session.accessToken);
+     const hasAccess = guilds.some(guild => guild.id === guildid);
+     if (!hasAccess) {
+       return res.status(403).json({ error: "You don't have access to this guild." });
+     }
+
     client = await MongoClient.connect(process.env.MONGODB_URI, {
       serverApi: ServerApiVersion.v1,
     });
