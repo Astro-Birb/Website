@@ -3,12 +3,12 @@ import Sidebar from '@/components/sidebar';
 import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
+
 import DropdownSearch from '@/components/dropdown';
 
 interface Role {
     id: number;
     name: string;
-
 }
 
 const GuildDashboard = () => {
@@ -16,50 +16,52 @@ const GuildDashboard = () => {
     const router = useRouter();
     const { guildid } = router.query;
     const [guild, setGuild] = useState<Role | null>(null);
-    const [prefix, setPrefix] = useState<string | null>(null);
+    const [configData, setConfigData] = useState<any | null>(null);
     const [roles, setRoles] = useState<Role[]>([]);
     const [staffRoles, setStaffRoles] = useState<Role[]>([]);
     const [adminRoles, setAdminRoles] = useState<Role[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [prefix, setPrefix] = useState<string>('');
+
+
 
     useEffect(() => {
-        const fetchGuildData = async () => {
+        const fetchData = async () => {
+            setIsLoading(true);
             try {
-                const response = await fetch(`/api/discord/guild/${guildid}`);
-                if (!response.ok) {
+                
+                const [guildResponse, configResponse] = await Promise.all([
+                    fetch(`/api/discord/guild/${guildid}`, { cache: 'force-cache' }),
+                    fetch(`/api/data/${guildid}/overview`, { next: { revalidate: 10 } })
+                ]);
+
+
+                if (!guildResponse.ok) {
+                    console.error('Failed to fetch guild data');
                     router.push('/guilds');
                     return;
                 }
-                if (response.ok) {
-                    const data = await response.json();
-                    setGuild(data);
-                    setRoles(data.roles);
+
+                const guildData = await guildResponse.json();
+                setGuild(guildData);
+                setRoles(guildData.roles);
+
+                if (configResponse.ok) {
+                    const configData = await configResponse.json();
+                    setConfigData(configData);
+                    setPrefix(configData?.prefix?.prefix || '');
                 } else {
-                    console.error('Failed to fetch guild data');
+                    console.error('Failed to fetch config data');
                 }
             } catch (error) {
-                console.error('Error fetching guild data:', error);
+                console.error('Error fetching data:', error);
             } finally {
                 setIsLoading(false);
             }
         };
-        const fetchPrefix = async () => {
-            try {
-                const response = await fetch(`/api/data/${guildid}/prefix`);
-                if (!response.ok) {
-                    console.error('Failed to fetch prefix data');
-                    return;
-                }
-                const data = await response.json();
-                setPrefix(data.prefix.prefix);
-            } catch (error) {
-                console.error('Error fetching prefix data:', error);
-            }
-        };
 
         if (guildid) {
-            fetchGuildData();
-            fetchPrefix();
+            fetchData();
         }
     }, [guildid]);
 
@@ -71,7 +73,7 @@ const GuildDashboard = () => {
                         <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
                     </path>
                 </svg>
-                <p className="text-xl text-gray-300">Loading guild...</p>
+                <p className="text-xl text-gray-300">Loading config...</p>
             </div>
         );
     }
@@ -99,7 +101,7 @@ const GuildDashboard = () => {
                                     <input
                                         type="text"
                                         id="prefix-input"
-                                        defaultValue={prefix || ''}
+                                        value={prefix}
                                         onChange={(e) => setPrefix(e.target.value)}
                                         className="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     />
@@ -142,3 +144,7 @@ const GuildDashboard = () => {
 };
 
 export default GuildDashboard;
+
+
+
+   

@@ -16,8 +16,10 @@
     "next-auth": "^4.24.7",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-query": "^3.39.3",
     "react-router": "^6.24.1",
     "react-router-dom": "^6.24.1",
+    "swr": "^2.2.5",
     "tabler-icons-react": "^1.56.0",
     "turbopack": "^0.0.1",
     "typeit-react": "^2.7.1"

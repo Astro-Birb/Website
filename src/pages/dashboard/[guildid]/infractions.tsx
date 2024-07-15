@@ -5,7 +5,6 @@ import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { redirect} from 'next/navigation';
-
 const Infractions = () => {
     const { data: session, status } = useSession();
     const router = useRouter();
@@ -18,7 +17,7 @@ const Infractions = () => {
     useEffect(() => {
         const fetchGuildData = async () => {
             try {
-                const response = await fetch(`/api/discord/guild/${guildid}`);
+                const response = await fetch(`/api/discord/guild/${guildid}`,  { cache: 'force-cache' });
                 if (!response.ok)
                 {
                     router.push('/guilds');
@@ -56,7 +55,7 @@ const Infractions = () => {
                         <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
                     </path>
                 </svg>
-                <p className="text-xl text-gray-300">Loading guild...</p>
+                <p className="text-xl text-gray-300">Loading config...</p>
             </div>
         );
     }
@@ -76,6 +75,7 @@ const Infractions = () => {
             <div className="flex flex-col min-h-screen bg-gradient-to-b from-stone-950 to-zinc-950 text-white font-sans relative">
                 <Sidebar Guild={guild} />
             </div>
+            
         </main>
     );
 };

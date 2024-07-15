@@ -56,7 +56,7 @@ const Infractions = () => {
                         <animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12" />
                     </path>
                 </svg>
-                <p className="text-xl text-gray-300">Loading guild...</p>
+                <p className="text-xl text-gray-300">Loading config...</p>
             </div>
         );
     }
