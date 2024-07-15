@@ -31,7 +31,7 @@ const GuildDashboard = () => {
             try {
                 
                 const [guildResponse, configResponse] = await Promise.all([
-                    fetch(`/api/discord/guild/${guildid}`, { cache: 'force-cache' }),
+                    fetch(`/api/discord/guild/${guildid}`, {cache: 'force-cache',next: { revalidate: 360 }}),
                     fetch(`/api/data/${guildid}/overview`, { next: { revalidate: 10 } })
                 ]);
 
