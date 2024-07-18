@@ -156,7 +156,7 @@ const Page = () => {
                 <button
                   type="button"
                   onClick={handleOpenModal}
-                  className="mt-4 w-full shrink-0 rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 sm:mt-0 sm:w-auto"
+                  className="inline-flex items-center rounded-md border border-transparent bg-indigo-400 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-indigo-700 dark:hover:bg-indigo-600 dark:focus:ring-primary-700"
                 >
                   Create a Post
                 </button>
