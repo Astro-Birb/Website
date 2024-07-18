@@ -23,6 +23,16 @@ interface Comment {
   author_icon?: string;
 }
 
+interface UserRoles {
+  [key: string]: 'staff' | 'operator' | 'admin';
+}
+
+const userRoles: UserRoles = {
+  "bugsbirt": "operator",
+  "markination": "operator",
+  "zippybonzo": "admin"
+};
+
 const PostPage = () => {
   const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
@@ -30,7 +40,7 @@ const PostPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState<Comment[]>([]);
-  
+
   const { id } = router.query;
   const { data: session, status } = useSession();
 
@@ -134,6 +144,19 @@ const PostPage = () => {
     }
   };
 
+  const badgecolor = (role: string) => {
+    switch (role) {
+      case 'admin':
+        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300';
+      case 'staff':
+        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300';
+      case 'operator':
+        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300';
+      default:
+        return '';
+    }
+  };
+
   if (loading) return (
     <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 z-50">
       <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" viewBox="0 0 24 24">
@@ -181,7 +204,7 @@ const PostPage = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6">
+          <div className="bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto">
             <div className="flex items-center p-6 border-b border-zinc-900 dark:border-zinc-700">
               <img className="mr-4 w-12 h-12 rounded-full" src={post.author_icon} alt={post.author_name} />
               <div>
@@ -203,34 +226,44 @@ const PostPage = () => {
             </div>
           </div>
 
-          <section className="dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 py-12 lg:py-20">
-            <div className="max-w-2xl mx-auto px-4">
+          <section className="dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto p-6 lg:p-12">
+            <div>
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
                   Discussion
                 </h2>
               </div>
               <ul className="space-y-6">
-                {comments.map((comment) => (
-                  <li key={comment._id} className="p-4 border-b border-gray-300 dark:border-gray-700">
-                    <div className="flex items-start mb-4">
-                      <img className="mr-4 w-12 h-12 rounded-full" src={comment.author_icon || author_icon} alt={comment.author} />
-                      <div className="flex-1">
-                        <p className="text-sm font-medium text-gray-900 dark:text-white">{comment.author}</p>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">{new Date(comment.createdAt).toLocaleDateString()}</p>
-                        <p className="mt-2 text-gray-800 dark:text-gray-300">{comment.content}</p>
+                {comments.map((comment) => {
+                  const userRole = userRoles[comment.author] || '';
+                  return (
+                    <li key={comment._id} className="p-4 border-b border-gray-300 dark:border-gray-700">
+                      <div className="flex items-start mb-4">
+                        <img className="mr-4 w-12 h-12 rounded-full" src={comment.author_icon || author_icon} alt={comment.author} />
+                        <div className="flex-1">
+                          <div className="flex items-center">
+                            <p className="text-sm font-medium text-gray-900 dark:text-white">{comment.author}</p>
+                            {userRole && (
+                              <span className={`ml-1.5 inline-block rounded px-1 py-0 text-xs font-medium ${badgecolor(userRole)}`}>
+                                {userRole.charAt(0).toUpperCase() + userRole.slice(1)}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-sm text-gray-600 dark:text-gray-400">{new Date(comment.createdAt).toLocaleDateString()}</p>
+                          <p className="mt-2 text-gray-800 dark:text-gray-300">{comment.content}</p>
+                        </div>
+                        {comment.author === author_name && (
+                          <button
+                            onClick={() => handleCommentDelete(comment._id)}
+                            className="text-sm text-red-600 dark:text-red-500 ml-4"
+                          >
+                            Delete
+                          </button>
+                        )}
                       </div>
-                      {comment.author === author_name && (
-                        <button
-                          onClick={() => handleCommentDelete(comment._id)}
-                          className="text-sm text-red-600 dark:text-red-500 ml-4"
-                        >
-                          Delete
-                        </button>
-                      )}
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
 
               <form onSubmit={handleCommentSubmit} className="mt-10 space-y-6">
