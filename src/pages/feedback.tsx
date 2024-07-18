@@ -148,7 +148,7 @@ const Page = () => {
                     id="simple-search"
                     value={searchQuery}
                     onChange={handleSearchChange}
-                    onKeyDown={handleSearchKeyDown} // Prevent Enter key default behavior
+                    onKeyDown={handleSearchKeyDown} 
                     className="block w-full rounded-lg border border-gray-300 bg-zinc-400 px-4 py-2.5 ps-9 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
                     placeholder="Search Posts"
                   />
