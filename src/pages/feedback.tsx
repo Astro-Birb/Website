@@ -90,7 +90,7 @@ const Page = () => {
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); // Prevent form submission or any default action
+      e.preventDefault(); 
     }
   };
 
@@ -132,9 +132,10 @@ const Page = () => {
         <section className="py-8 antialiased md:py-12">
           <div className="mx-auto max-w-screen-lg px-4 2xl:px-0">
             <div className="lg:flex lg:items-center lg:justify-between lg:gap-4">
-              <h2 className="shrink-0 text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">
-                Posts ({filteredPosts.length})
+              <h2 className="shrink-0 text-xl underline text-gray-900 dark:text-white sm:text-2xl">
+                Feedback Posts ({filteredPosts.length})
               </h2>
+              
               <form className="mt-4 w-full gap-4 sm:flex sm:items-center sm:justify-end lg:mt-0">
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full flex-1 lg:max-w-sm">
@@ -166,11 +167,11 @@ const Page = () => {
             <div className="mt-6 flow-root">
               <div className="-my-6 divide-y divide-gray-200 dark:divide-gray-800">
                 {filteredPosts.map((post) => (
-                  <div key={post._id} className="space-y-4 py-6 md:py-8">
-                    <div className="grid gap-4">
+                  <div key={post._id} className="space-y-4 py-6 md:py-4">
+                    <div className="grid gap-3">
                       <div>
                         <span className="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
-                          Posted on {new Date(post.createdAt).toLocaleDateString()}
+                          {post.tag}
                         </span>
                       </div>
                       <a onClick={() => router.push(`/feedback/post/${post._id}`)} className="text-xl font-semibold text-gray-900 hover:underline dark:text-white">
@@ -182,14 +183,12 @@ const Page = () => {
                     </p>
                     <div className="flex items-center gap-2">
                       <img src={post.author_icon} alt={post.author_name} className="h-8 w-8 rounded-full" />
-                      <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                        {post.author_name}
-                      </p>
-                      {post.tag && (
-                        <span className="ml-2 inline-block rounded bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-800 dark:bg-blue-900 dark:text-blue-300">
-                          {post.tag}
-                        </span>
-                      )}
+                      <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                        <p>{post.author_name}</p>
+                        <p className="text-xs text-gray-400 dark:text-gray-500">
+                          Posted on {new Date(post.createdAt).toLocaleDateString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 ))}
