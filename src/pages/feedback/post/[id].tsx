@@ -269,7 +269,7 @@ const PostPage = () => {
               <form onSubmit={handleCommentSubmit} className="mt-10 space-y-6">
                 <textarea
                   rows={5}
-                  className="block w-full p-3 text-sm text-gray-900 bg-gray-50 dark:bg-gray-800 dark:text-white rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
+                  className="block w-full p-3 text-sm text-gray-900 bg-gray-50 dark:bg-zinc-950 dark:text-white rounded-lg border border-gray-300 dark:border-zinc-800 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Leave a comment..."
                   value={comment}
                   onChange={handleCommentChange}
