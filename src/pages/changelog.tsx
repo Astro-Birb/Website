@@ -65,14 +65,26 @@ const Changelog = () => {
       <main className="flex-grow container mx-auto px-4 py-8 mt-16">
         <div className="max-w-4xl mx-auto">
           <div className="flex justify-center mb-4">
-            <div className="inline-flex rounded-md shadow-sm">
-              <button onClick={() => router.push("/roadmap")} className="onclickbutton px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                Roadmap
-              </button>
-              <button onClick={() => router.push("/changelog")} className="onclickbutton px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                Changelog
-              </button>
-            </div>
+          <div className="inline-flex rounded-md shadow-sm">
+            <button
+              onClick={() => router.push("/roadmap")}
+              className="onclickbutton px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
+            >
+              Roadmap
+            </button>
+            <button
+              onClick={() => router.push("/feedback")}
+              className="onclickbutton px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
+            >
+              Feedback
+            </button>
+            <button
+              onClick={() => router.push("/changelog")}
+              className="onclickbutton px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
+            >
+              Changelog
+            </button>
+          </div>
           </div>
           <h1 className="text-3xl font-semibold mb-8">Changelog</h1>
           <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-zinc-800"></hr>
