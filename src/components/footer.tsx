@@ -20,8 +20,11 @@ export default function Footer() {
                                 <li className="mb-4">
                                     <a href="https://docs.astrobirb.dev" className="hover:underline">Documentation</a>
                                 </li>
-                                <li>
+                                <li className="mb-4">
                                     <a href="/support" className="hover:underline">Support Server</a>
+                                </li>
+                                <li className="mb-4">
+                                    <a href="/roadmap" className="hover:underline">Road Map</a>
                                 </li>
                             </ul>
                         </div>
