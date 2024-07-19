@@ -1,5 +1,4 @@
-"use client";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 import Header from '@/components/header';
 import { useSession } from 'next-auth/react';
@@ -11,6 +10,7 @@ interface Post {
   author_icon: string;
   author_name: string;
   createdAt: string;
+  status: string;
   tag?: string;
 }
 
@@ -33,6 +33,13 @@ const userRoles: UserRoles = {
   "zippybonzo": "admin"
 };
 
+const statusColors: { [key: string]: string } = {
+  'Under Review': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+  'Implemented': "'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+  'In Development': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+  'Denied': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+};
+
 const PostPage = () => {
   const router = useRouter();
   const [post, setPost] = useState<Post | null>(null);
@@ -40,13 +47,18 @@ const PostPage = () => {
   const [error, setError] = useState<string | null>(null);
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState<Comment[]>([]);
+  const [status, setStatus] = useState<string>('Under Review');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const { id } = router.query;
-  const { data: session, status } = useSession();
+  const { data: session, status: sessionStatus } = useSession();
 
   const author_icon = session?.user?.image || '';
   const author_name = session?.user?.name || '';
-  if (status === 'unauthenticated') {
+  const userRole = userRoles[author_name] || '';
+
+  if (sessionStatus === 'unauthenticated') {
     router.push('/api/auth/signin');
     return null;
   }
@@ -61,6 +73,7 @@ const PostPage = () => {
           }
           const data = await response.json();
           setPost(data[0]);
+          setStatus(data[0]?.status || 'Under Review');
         } catch (error) {
           setError('Error fetching post');
           console.error(error);
@@ -89,6 +102,19 @@ const PostPage = () => {
     fetchPost();
     fetchComments();
   }, [id]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const handleCommentChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(event.target.value);
@@ -144,6 +170,45 @@ const PostPage = () => {
     }
   };
 
+  const handlePostDelete = async () => {
+    try {
+      const response = await fetch(`/api/posts/delete`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id }), 
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete post');
+      }
+      router.push('/feedback');
+    } catch (error) {
+      setError('Error deleting post');
+      console.error(error);
+    }
+  };
+
+  const handleStatusChange = async (newStatus: string) => {
+    setStatus(newStatus);
+
+    try {
+      const response = await fetch(`/api/posts/status`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id, status: newStatus }),
+      });
+      if (!response.ok) {
+        throw new Error('Failed to update status');
+      }
+    } catch (error) {
+      setError('Error updating status');
+      console.error(error);
+    }
+  };
+
   const badgecolor = (role: string) => {
     switch (role) {
       case 'admin':
@@ -191,7 +256,7 @@ const PostPage = () => {
               </button>
               <button
                 onClick={() => router.push("/feedback")}
-                className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
+                className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-none hover:bg-gray-100 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
               >
                 Feedback
               </button>
@@ -204,7 +269,7 @@ const PostPage = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto">
+          <div className="bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto relative">
             <div className="flex items-center p-6 border-b border-zinc-900 dark:border-zinc-700">
               <img className="mr-4 w-12 h-12 rounded-full" src={post.author_icon} alt={post.author_name} />
               <div>
@@ -218,7 +283,50 @@ const PostPage = () => {
                       {post.tag}
                     </span>
                   )}
+                  <span
+                    className={`ml-2 inline-block rounded px-2.5 py-0.5 text-xs font-medium ${statusColors[status]}`}
+                  >
+                    {status.charAt(0).toUpperCase() + status.slice(1)}
+                  </span>
                 </div>
+              </div>
+              <div className="ml-auto flex items-center space-x-4">
+                {['admin', 'operator'].includes(userRole) && (
+                  <div className="relative">
+                    <button
+                      onClick={() => setDropdownOpen(prev => !prev)}
+                      className="p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800 rounded-full"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="1"></circle>
+                        <circle cx="12" cy="5" r="1"></circle>
+                        <circle cx="12" cy="19" r="1"></circle>
+                      </svg>
+                    </button>
+                    {dropdownOpen && (
+                      <div ref={dropdownRef} className="absolute right-0 mt-2 w-48 bg-zinc-950 border border-zinc-700 rounded-lg shadow-lg">
+                        <button
+                          onClick={handlePostDelete}
+                          className="block w-full text-left px-4 py-2 text-sm text-red-400 hover:bg-zinc-800"
+                        >
+                          Delete Post
+                        </button>
+                        <div className="border-t border-zinc-700">
+                          <select
+                            value={status}
+                            onChange={(e) => handleStatusChange(e.target.value)}
+                            className="block w-full bg-zinc-950 text-white border-none focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
+                          >
+                            <option value="Under Review">Under Review</option>
+                            <option value="In Development">In Development</option>
+                            <option value="Implemented">Implemented</option>
+                            <option value="Denied">Denied</option>
+                          </select>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             <div className="p-6">

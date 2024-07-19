@@ -11,7 +11,15 @@ export interface Post {
   author_icon: string;
   createdAt: string;
   tag?: string;
+  status: string; // Add status field
 }
+
+const statusColors: { [key: string]: string } = {
+  'Under Review': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
+  'Implemented': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
+  'In Development': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+  'Denied': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+};
 
 const Page = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -169,9 +177,12 @@ const Page = () => {
                 {filteredPosts.map((post) => (
                   <div key={post._id} className="space-y-4 py-6 md:py-4">
                     <div className="grid gap-3">
-                      <div>
+                      <div className="flex items-center space-x-1.5">
                         <span className="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
                           {post.tag}
+                        </span>
+                        <span className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded ${statusColors[post.status]}`}>
+                          {post.status}
                         </span>
                       </div>
                       <a onClick={() => router.push(`/feedback/post/${post._id}`)} className="text-xl font-semibold text-gray-900 hover:underline dark:text-white">
