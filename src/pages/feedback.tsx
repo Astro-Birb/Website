@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
-import Header from '@/components/header';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useEffect, useState } from "react";
+import Header from "@/components/header";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export interface Post {
   _id: string;
@@ -15,40 +15,47 @@ export interface Post {
 }
 
 const statusColors: { [key: string]: string } = {
-  'Under Review': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
-  'Implemented': 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-  'In Development': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
-  'Denied': 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300',
+  "Under Review":
+    "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
+  Implemented:
+    "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+  "In Development":
+    "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
+  Denied: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
 };
 
 const Page = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [newPost, setNewPost] = useState<{ title: string; content: string; tag?: string }>({
-    title: '',
-    content: '',
-    tag: 'Suggestion',
+  const [newPost, setNewPost] = useState<{
+    title: string;
+    content: string;
+    tag?: string;
+  }>({
+    title: "",
+    content: "",
+    tag: "Suggestion",
   });
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const { data: session, status } = useSession();
   const router = useRouter();
 
-  if (status === 'unauthenticated') {
-    router.push('/api/auth/signin');
+  if (status === "unauthenticated") {
+    router.push("/api/auth/signin");
     return null;
   }
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch('/api/posts/view');
+      const response = await fetch("/api/posts/view");
       if (response.ok) {
         const data: Post[] = await response.json();
         setPosts(data);
       } else {
-        throw new Error('Failed to fetch posts');
+        throw new Error("Failed to fetch posts");
       }
     } catch (error) {
-      console.error('Error fetching posts:', error);
+      console.error("Error fetching posts:", error);
     }
   };
 
@@ -64,31 +71,35 @@ const Page = () => {
     setIsModalOpen(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { id, value } = e.target;
-    setNewPost(prevState => ({ ...prevState, [id]: value }));
+    setNewPost((prevState) => ({ ...prevState, [id]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/posts/create', {
-        method: 'POST',
+      const response = await fetch("/api/posts/create", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(newPost),
       });
       if (response.ok) {
         const newPostData: Post = await response.json();
-        setPosts(prevPosts => [newPostData, ...prevPosts]);
+        setPosts((prevPosts) => [newPostData, ...prevPosts]);
         handleCloseModal();
         router.refresh();
       } else {
-        throw new Error('Failed to create post');
+        throw new Error("Failed to create post");
       }
     } catch (error) {
-      console.error('Error creating post:', error);
+      console.error("Error creating post:", error);
     }
   };
 
@@ -97,14 +108,15 @@ const Page = () => {
   };
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
     }
   };
 
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.content.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.content.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -145,11 +157,26 @@ const Page = () => {
               </h2>
 
               <form className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between lg:mt-0 gap-4">
-                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <label htmlFor="simple-search" className="sr-only">
+                  Search
+                </label>
                 <div className="relative flex-1 w-full sm:w-auto">
                   <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-                    <svg className="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                      <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    <svg
+                      className="h-4 w-4 text-gray-500 dark:text-gray-400"
+                      aria-hidden="true"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeWidth="2"
+                        d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z"
+                      />
                     </svg>
                   </div>
                   <input
@@ -172,9 +199,6 @@ const Page = () => {
                   </button>
                 </div>
               </form>
-
-
-
             </div>
 
             <div className="mt-6 flow-root">
@@ -186,11 +210,20 @@ const Page = () => {
                         <span className="inline-block rounded bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800 dark:bg-green-900 dark:text-green-300">
                           {post.tag}
                         </span>
-                        <span className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded ${statusColors[post.status]}`}>
+                        <span
+                          className={`inline-block px-2.5 py-0.5 text-xs font-medium rounded ${
+                            statusColors[post.status]
+                          }`}
+                        >
                           {post.status}
                         </span>
                       </div>
-                      <a onClick={() => router.push(`/feedback/post/${post._id}`)} className="text-xl font-semibold text-gray-900 hover:underline dark:text-white">
+                      <a
+                        onClick={() =>
+                          router.push(`/feedback/post/${post._id}`)
+                        }
+                        className="text-xl font-semibold text-gray-900 hover:underline dark:text-white"
+                      >
                         {post.title}
                       </a>
                     </div>
@@ -198,11 +231,16 @@ const Page = () => {
                       {post.content}
                     </p>
                     <div className="flex items-center gap-2">
-                      <img src={post.author_icon} alt={post.author_name} className="h-8 w-8 rounded-full" />
+                      <img
+                        src={post.author_icon}
+                        alt={post.author_name}
+                        className="h-8 w-8 rounded-full"
+                      />
                       <div className="text-sm font-medium text-gray-500 dark:text-gray-400">
                         <p>{post.author_name}</p>
                         <p className="text-xs text-gray-400 dark:text-gray-500">
-                          Posted on {new Date(post.createdAt).toLocaleDateString()}
+                          Posted on{" "}
+                          {new Date(post.createdAt).toLocaleDateString()}
                         </p>
                       </div>
                     </div>
@@ -216,10 +254,17 @@ const Page = () => {
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
             <div className="relative w-full max-w-lg p-4 bg-white rounded-lg dark:bg-zinc-900">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Create a Post</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                Create a Post
+              </h3>
               <form onSubmit={handleSubmit} className="mt-4 space-y-4">
                 <div>
-                  <label htmlFor="title" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Title</label>
+                  <label
+                    htmlFor="title"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Title
+                  </label>
                   <input
                     type="text"
                     id="title"
@@ -230,7 +275,12 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="content" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Content</label>
+                  <label
+                    htmlFor="content"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Content
+                  </label>
                   <textarea
                     id="content"
                     value={newPost.content}
@@ -241,7 +291,12 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="tag" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Tag</label>
+                  <label
+                    htmlFor="tag"
+                    className="block text-sm font-medium text-gray-700 dark:text-gray-300"
+                  >
+                    Tag
+                  </label>
                   <select
                     id="tag"
                     value={newPost.tag}
@@ -252,10 +307,17 @@ const Page = () => {
                   </select>
                 </div>
                 <div className="flex justify-end space-x-2">
-                  <button type="button" onClick={handleCloseModal} className="inline-flex items-center rounded-md border border-transparent bg-gray-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-primary-700">
+                  <button
+                    type="button"
+                    onClick={handleCloseModal}
+                    className="inline-flex items-center rounded-md border border-transparent bg-gray-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-primary-700"
+                  >
                     Cancel
                   </button>
-                  <button type="submit" className="inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:ring-primary-700">
+                  <button
+                    type="submit"
+                    className="inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:ring-primary-700"
+                  >
                     Submit
                   </button>
                 </div>

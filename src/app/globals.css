@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   color: rgb(var(--foreground-rgb));
   overflow-x: hidden;
   background: linear-gradient(
@@ -39,7 +39,7 @@ body {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15); 
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
@@ -63,24 +63,19 @@ body {
   -webkit-background-clip: text;
 }
 
-
-
 .glow {
   filter: drop-shadow(0 0 2px #5b65e8);
   animation: glow 2s ease-in-out infinite;
- }
+}
 
 .scrollable-section {
-  max-height: 400px; 
+  max-height: 400px;
   overflow-y: auto;
-
 }
 
 ::-webkit-scrollbar {
   display: none;
 }
-
-
 
 ::-webkit-scrollbar-track {
   background: #2e374300;
@@ -88,34 +83,28 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background: #263f6400;
-  border-radius: 4px; 
+  border-radius: 4px;
 }
-
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280; 
+  background: #6b7280;
 }
 
-.onclickbutton{
-  cursor:pointer;
+.onclickbutton {
+  cursor: pointer;
 }
 
-@media (max-width: 1920px){
+@media (max-width: 1920px) {
   .dashtab {
     position: relative;
     left: 280px;
     top: 90px;
-
   }
-  
 }
 
 @media (max-width: 680px) {
   .dashtab {
-    left: 0px; 
-    top: 125px; 
-
+    left: 0px;
+    top: 125px;
   }
 }
-
-

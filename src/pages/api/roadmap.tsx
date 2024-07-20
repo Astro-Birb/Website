@@ -1,6 +1,4 @@
-import { MongoClient, ServerApiVersion, Long } from 'mongodb';
-
-
+import { MongoClient, ServerApiVersion, Long } from "mongodb";
 
 //@ts-ignore
 export default async function handler(req, res) {
@@ -15,11 +13,9 @@ export default async function handler(req, res) {
     const roadmapdata = await astro.collection("Road Map").find().toArray();
     const data = roadmapdata;
     res.status(200).json(data);
-
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
-    res.status(500).json({ error: 'Internal Server Error' });
-
+    res.status(500).json({ error: "Internal Server Error" });
   } finally {
     if (client) {
       await client.close();

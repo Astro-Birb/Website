@@ -1,12 +1,14 @@
-import NextAuth from 'next-auth';
-import DiscordProvider from 'next-auth/providers/discord';
+import NextAuth from "next-auth";
+import DiscordProvider from "next-auth/providers/discord";
 
 const clientId = process.env.DISCORD_CLIENT_ID;
 const clientSecret = process.env.DISCORD_CLIENT_SECRET;
 
 // Ensure environment variables are present
 if (!clientId || !clientSecret) {
-  throw new Error('Missing environment variables DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET');
+  throw new Error(
+    "Missing environment variables DISCORD_CLIENT_ID or DISCORD_CLIENT_SECRET"
+  );
 }
 
 export const authOptions = {
@@ -18,7 +20,7 @@ export const authOptions = {
       clientSecret: clientSecret,
       authorization: {
         params: {
-          scope: 'identify guilds guilds.members.read',
+          scope: "identify guilds guilds.members.read",
         },
       },
       profile(profile) {
@@ -26,7 +28,7 @@ export const authOptions = {
           const defaultAvatarNumber = parseInt(profile.discriminator) % 5;
           profile.image_url = `https://cdn.discordapp.com/embed/avatars/${defaultAvatarNumber}.png`;
         } else {
-          const format = profile.avatar.startsWith('a_') ? 'gif' : 'png';
+          const format = profile.avatar.startsWith("a_") ? "gif" : "png";
           profile.image_url = `https://cdn.discordapp.com/avatars/${profile.id}/${profile.avatar}.${format}`;
         }
 
@@ -51,11 +53,11 @@ export const authOptions = {
       }
       if (profile) {
         token.profile = profile;
-        token.userId = profile.id;  // Include the userId in the token
+        token.userId = profile.id; // Include the userId in the token
       }
       return token;
     },
-      //@ts-ignore
+    //@ts-ignore
     session: async ({ session, token }) => {
       session.accessToken = token.accessToken;
       session.tokenType = token.tokenType;
@@ -64,5 +66,5 @@ export const authOptions = {
     },
   },
 };
- //@ts-ignore
+//@ts-ignore
 export default NextAuth(authOptions);

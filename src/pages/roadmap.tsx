@@ -97,12 +97,9 @@ const Roadmap = () => {
         <Header />
       </div>
 
-
-
-
       <main className="flex-grow container mx-auto px-4 py-8 mt-16 overflow-y-auto">
         <div className="flex justify-center mb-4">
-        <div className="inline-flex rounded-md shadow-sm">
+          <div className="inline-flex rounded-md shadow-sm">
             <button
               onClick={() => router.push("/roadmap")}
               className="onclickbutton px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
@@ -124,12 +121,18 @@ const Roadmap = () => {
           </div>
         </div>
 
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {(['Planned', 'In Progress', 'Complete'] as const).map((stage) => (
-            <div key={stage} className="bg-gradient-to-b from-zinc-950 to-neutral-950 border-zinc-900 border rounded-lg shadow-lg p-6 h-[calc(100vh-200px)] flex flex-col">
+          {(["Planned", "In Progress", "Complete"] as const).map((stage) => (
+            <div
+              key={stage}
+              className="bg-gradient-to-b from-zinc-950 to-neutral-950 border-zinc-900 border rounded-lg shadow-lg p-6 h-[calc(100vh-200px)] flex flex-col"
+            >
               <div className="flex items-center mb-2">
-                <span className={`w-3 h-3 rounded-full ${stageColColor(stage)} mr-2`}></span>
+                <span
+                  className={`w-3 h-3 rounded-full ${stageColColor(
+                    stage
+                  )} mr-2`}
+                ></span>
                 <h2 className="text-lg font-semibold">{stage}</h2>
               </div>
               <hr className="h-px my-2 bg-gray-200 border-0 dark:bg-zinc-800"></hr>

@@ -10,22 +10,19 @@ type ChangeLogItem = {
 
 const Changelogdata: ChangeLogItem[] = [
   {
-    date: '2024-07-24',
-    version: '2.9.3',
+    date: "2024-07-24",
+    version: "2.9.3",
     changes: [
-      'Documentation updated',
-      'Road map & Change log added',
-      'Online suggestions!',
+      "Documentation updated",
+      "Road map & Change log added",
+      "Online suggestions!",
     ],
   },
   {
-    date: '2024-07-24',
-    version: '2.9.4',
-    changes: [
-      'Bug fixes and performance improvements',
-      'UI enhancements',
-    ],
-  }
+    date: "2024-07-24",
+    version: "2.9.4",
+    changes: ["Bug fixes and performance improvements", "UI enhancements"],
+  },
 ];
 
 const Changelog = () => {
@@ -43,7 +40,18 @@ const Changelog = () => {
       return (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="bg-indigo-500 rounded-full w-16 h-16 flex items-center justify-center mb-4 opacity-70 shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icon-tabler-map-question">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width={24}
+              height={24}
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="icon icon-tabler icon-tabler-map-question"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M15 20l-6 -3l-6 3v-13l6 -3l6 3l6 -3v7.5" />
               <path d="M9 4v13" />
@@ -52,7 +60,9 @@ const Changelog = () => {
               <path d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483" />
             </svg>
           </div>
-          <p className="text-gray-500 text-center">No updates found in the changelog.</p>
+          <p className="text-gray-500 text-center">
+            No updates found in the changelog.
+          </p>
         </div>
       );
     }
@@ -62,7 +72,18 @@ const Changelog = () => {
         {Changelogdata.map((item, index) => (
           <li key={index} className="relative mb-8">
             <div className="absolute flex items-center justify-center w-8 h-8 bg-blue-600 text-white rounded-full -left-4 ring-4 ring-white dark:ring-gray-900 dark:bg-blue-900">
-              <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icon-tabler-edit">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={24}
+                height={24}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="icon icon-tabler icon-tabler-edit"
+              >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
                 <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
