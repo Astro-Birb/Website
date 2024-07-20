@@ -34,7 +34,10 @@ export default function TermsOfService() {
                         <article className="mb-8">
                             <h3 className="text-2xl font-bold mb-2">3. Prohibited Activities</h3>
                             <p className="text-lg text-gray-300 mb-4">
-                                You are prohibited from impersonating any staff member of Astro Birb or the bot itself. Spamming commands or engaging in activities that negatively impact the bot's performance is strictly prohibited.
+                                The following activities are prohibited:</br>
+                                    Using our services to facilitate in illegal activities or those that break Discord's Terms of Service/Community Guidelines</br>
+                                    Using our services to send advertisements to another user without their consent, or send messages at a high rate.</br>
+                                    Using our services in any way that may negatively impact the services or the reputation of the service/its staff team.
                             </p>
                         </article>
 
