@@ -33,7 +33,7 @@ const userRoles: UserRoles = {
   "zippybonzo": "admin"
 };
 
-const statusColors: { [key: string]: string } = {
+const statuscolors: { [key: string]: string } = {
   'Under Review': 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300',
   'Implemented': "'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
   'In Development': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
@@ -64,7 +64,7 @@ const PostPage = () => {
   }
 
   useEffect(() => {
-    const fetchPost = async () => {
+    const fetchposts = async () => {
       if (id) {
         try {
           const response = await fetch(`/api/posts/${id}`);
@@ -83,7 +83,7 @@ const PostPage = () => {
       }
     };
 
-    const fetchComments = async () => {
+    const fetchcomments = async () => {
       if (id) {
         try {
           const response = await fetch(`/api/posts/comments?postId=${id}`);
@@ -99,8 +99,8 @@ const PostPage = () => {
       }
     };
 
-    fetchPost();
-    fetchComments();
+    fetchposts();
+    fetchcomments();
   }, [id]);
 
   useEffect(() => {
@@ -177,7 +177,7 @@ const PostPage = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ id }), 
+        body: JSON.stringify({ id }),
       });
       if (!response.ok) {
         throw new Error('Failed to delete post');
@@ -189,7 +189,7 @@ const PostPage = () => {
     }
   };
 
-  const handleStatusChange = async (newStatus: string) => {
+  const handwelstguchange = async (newStatus: string) => {
     setStatus(newStatus);
 
     try {
@@ -284,7 +284,7 @@ const PostPage = () => {
                     </span>
                   )}
                   <span
-                    className={`ml-2 inline-block rounded px-2.5 py-0.5 text-xs font-medium ${statusColors[status]}`}
+                    className={`ml-2 inline-block rounded px-2.5 py-0.5 text-xs font-medium ${statuscolors[status]}`}
                   >
                     {status.charAt(0).toUpperCase() + status.slice(1)}
                   </span>
@@ -314,7 +314,7 @@ const PostPage = () => {
                         <div className="border-t border-zinc-700">
                           <select
                             value={status}
-                            onChange={(e) => handleStatusChange(e.target.value)}
+                            onChange={(e) => handwelstguchange(e.target.value)}
                             className="block w-full bg-zinc-950 text-white border-none focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
                           >
                             <option value="Under Review">Under Review</option>
@@ -376,7 +376,7 @@ const PostPage = () => {
 
               <form onSubmit={handleCommentSubmit} className="mt-6 sm:mt-10 space-y-4 sm:space-y-6">
                 <textarea
-                  rows={4} 
+                  rows={4}
                   className="block w-full p-3 text-sm text-gray-900 bg-gray-50 dark:bg-zinc-950 dark:text-white rounded-lg border border-gray-300 dark:border-zinc-800 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Leave a comment..."
                   value={comment}
