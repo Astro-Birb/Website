@@ -11,7 +11,7 @@ export interface Post {
   author_icon: string;
   createdAt: string;
   tag?: string;
-  status: string; // Add status field
+  status: string; 
 }
 
 const statusColors: { [key: string]: string } = {

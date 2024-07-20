@@ -245,35 +245,35 @@ const PostPage = () => {
       </div>
 
       <main className="pt-24">
-        <div className="container mx-auto px-4 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-8">
           <div className="flex justify-center mb-4">
             <div className="inline-flex rounded-md shadow-sm">
               <button
                 onClick={() => router.push("/roadmap")}
-                className="px-4 py-2 text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-l-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
+                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-blue-700 bg-white border border-gray-200 rounded-l-md hover:bg-gray-100 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
               >
                 Roadmap
               </button>
               <button
                 onClick={() => router.push("/feedback")}
-                className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-none hover:bg-gray-100 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
+                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-none hover:bg-gray-100 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
               >
                 Feedback
               </button>
               <button
                 onClick={() => router.push("/changelog")}
-                className="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
+                className="px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:ring-2 focus:ring-blue-700 dark:bg-zinc-950 dark:border-zinc-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500"
               >
                 Changelog
               </button>
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto relative">
-            <div className="flex items-center p-6 border-b border-zinc-900 dark:border-zinc-700">
+          <div className="overflow-auto bg-white dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto relative">
+            <div className="flex items-center p-6 border-b border-zinc-900 dark:border-zinc-700 flex-wrap">
               <img className="mr-4 w-12 h-12 rounded-full" src={post.author_icon} alt={post.author_name} />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{post.title}</h1>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">{post.title}</h1>
                 <div className="flex items-center mt-1">
                   <p className="text-sm text-gray-500 dark:text-gray-400">
                     By {post.author_name} on {post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ''}
@@ -290,7 +290,7 @@ const PostPage = () => {
                   </span>
                 </div>
               </div>
-              <div className="ml-auto flex items-center space-x-4">
+              <div className="ml-auto flex items-center space-x-4 mt-4 sm:mt-0">
                 {['admin', 'operator'].includes(userRole) && (
                   <div className="relative">
                     <button
@@ -329,15 +329,15 @@ const PostPage = () => {
                 )}
               </div>
             </div>
-            <div className="p-6">
-              <p className="text-lg text-gray-900 dark:text-white">{post.content}</p>
+            <div className="p-4 sm:p-6">
+              <p className="text-base sm:text-lg text-gray-900 dark:text-white">{post.content}</p>
             </div>
           </div>
 
-          <section className="dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto p-6 lg:p-12">
+          <section className="dark:bg-zinc-950 border border-zinc-900 rounded-lg shadow-md mb-6 max-w-4xl mx-auto p-4 sm:p-6 lg:p-12">
             <div>
-              <div className="flex justify-between items-center mb-8">
-                <h2 className="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
+              <div className="flex justify-between items-center mb-4 sm:mb-8">
+                <h2 className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
                   Discussion
                 </h2>
               </div>
@@ -347,7 +347,7 @@ const PostPage = () => {
                   return (
                     <li key={comment._id} className="p-4 border-b border-gray-300 dark:border-gray-700">
                       <div className="flex items-start mb-4">
-                        <img className="mr-4 w-12 h-12 rounded-full" src={comment.author_icon || author_icon} alt={comment.author} />
+                        <img className="mr-4 w-10 sm:w-12 h-10 sm:h-12 rounded-full" src={comment.author_icon || author_icon} alt={comment.author} />
                         <div className="flex-1">
                           <div className="flex items-center">
                             <p className="text-sm font-medium text-gray-900 dark:text-white">{comment.author}</p>
@@ -358,12 +358,12 @@ const PostPage = () => {
                             )}
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-400">{new Date(comment.createdAt).toLocaleDateString()}</p>
-                          <p className="mt-2 text-gray-800 dark:text-gray-300">{comment.content}</p>
+                          <p className="mt-2 text-sm sm:text-base text-gray-800 dark:text-gray-300">{comment.content}</p>
                         </div>
                         {comment.author === author_name && (
                           <button
                             onClick={() => handleCommentDelete(comment._id)}
-                            className="text-sm text-red-600 dark:text-red-500 ml-4"
+                            className="text-xs sm:text-sm text-red-600 dark:text-red-500 ml-4"
                           >
                             Delete
                           </button>
@@ -374,9 +374,9 @@ const PostPage = () => {
                 })}
               </ul>
 
-              <form onSubmit={handleCommentSubmit} className="mt-10 space-y-6">
+              <form onSubmit={handleCommentSubmit} className="mt-6 sm:mt-10 space-y-4 sm:space-y-6">
                 <textarea
-                  rows={5}
+                  rows={4} 
                   className="block w-full p-3 text-sm text-gray-900 bg-gray-50 dark:bg-zinc-950 dark:text-white rounded-lg border border-gray-300 dark:border-zinc-800 focus:ring-blue-500 dark:focus:ring-blue-500 focus:border-blue-500"
                   placeholder="Leave a comment..."
                   value={comment}
@@ -384,7 +384,7 @@ const PostPage = () => {
                 />
                 <button
                   type="submit"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:outline-none"
+                  className="inline-flex items-center px-3 sm:px-4 py-2  text-sm font-medium text-white bg-blue-600 rounded-lg shadow-sm hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-500 focus:outline-none"
                 >
                   Post Comment
                 </button>
