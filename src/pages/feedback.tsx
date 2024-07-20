@@ -11,7 +11,7 @@ export interface Post {
   author_icon: string;
   createdAt: string;
   tag?: string;
-  status: string; 
+  status: string;
 }
 
 const statusColors: { [key: string]: string } = {
@@ -98,7 +98,7 @@ const Page = () => {
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      e.preventDefault(); 
+      e.preventDefault();
     }
   };
 
@@ -143,35 +143,35 @@ const Page = () => {
               <h2 className="shrink-0 text-xl underline text-gray-900 dark:text-white sm:text-2xl">
                 Feedback Posts ({filteredPosts.length})
               </h2>
-              
+
               <form className="mt-4 flex flex-col sm:flex-row sm:items-center sm:justify-between lg:mt-0 gap-4">
-  <label htmlFor="simple-search" className="sr-only">Search</label>
-  <div className="relative flex-1 w-full sm:w-auto">
-    <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
-      <svg className="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
-      </svg>
-    </div>
-    <input
-      type="text"
-      id="simple-search"
-      value={searchQuery}
-      onChange={handleSearchChange}
-      onKeyDown={handleSearchKeyDown}
-      className="block w-full rounded-lg border border-gray-300 bg-zinc-400 px-4 py-2.5 ps-9 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-      placeholder="Search Posts"
-    />
-  </div>
-  <div className="flex  sm:justify-end">
-    <button
-      type="button"
-      onClick={handleOpenModal}
-      className="inline-flex  rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:ring-indigo-700"
-    >
-      Create a Post
-    </button>
-  </div>
-</form>
+                <label htmlFor="simple-search" className="sr-only">Search</label>
+                <div className="relative flex-1 w-full sm:w-auto">
+                  <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3">
+                    <svg className="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
+                    </svg>
+                  </div>
+                  <input
+                    type="text"
+                    id="simple-search"
+                    value={searchQuery}
+                    onChange={handleSearchChange}
+                    onKeyDown={handleSearchKeyDown}
+                    className="block w-full rounded-lg border border-gray-300 bg-zinc-400 px-4 py-2.5 ps-9 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                    placeholder="Search Posts"
+                  />
+                </div>
+                <div className="flex  sm:justify-end">
+                  <button
+                    type="button"
+                    onClick={handleOpenModal}
+                    className="inline-flex  rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500 dark:focus:ring-indigo-700"
+                  >
+                    Create a Post
+                  </button>
+                </div>
+              </form>
 
 
 
