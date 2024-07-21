@@ -10,7 +10,18 @@ type ChangeLogItem = {
 
 const Changelogdata: ChangeLogItem[] = [
   {
-    date: "2024-07-24",
+    date: "21-07-24",
+    version: "3.0",
+    changes: ["Added staff lists module"]
+  },    
+  {
+    date: "21-07-24",
+    version: "2.9.7",
+    changes: ["You can extend your loas in /loa manage", "You can now plan loas before hand using the optional start argument"]
+  },
+
+  {
+    date: "19-07-24",
     version: "2.9.3",
     changes: [
       "Documentation updated",
@@ -19,10 +30,16 @@ const Changelogdata: ChangeLogItem[] = [
     ],
   },
   {
-    date: "2024-07-24",
+    date: "19-07-24",
     version: "2.9.4",
     changes: ["Bug fixes and performance improvements", "UI enhancements"],
   },
+  {
+    date: "20-07-24",
+    version: "2.9.5",
+    changes: ["/mass promotion - You can now mass promote people.", "You now do anonymous modmail with /modmail reply.", "Added notes to /suspend."],
+  },
+
 ];
 
 const Changelog = () => {
