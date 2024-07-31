@@ -49,15 +49,7 @@ export default function PrivacyPolicy() {
             </ul>
           </article>
           <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">4. Data Security</h3>
-            <p className="text-lg text-gray-300">
-              Your data security is important to us. We implement industry-standard security measures
-              to protect your information from unauthorized access, disclosure, or misuse. We regularly
-              review our practices to enhance the safety of your data.
-            </p>
-          </article>
-          <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">5. Third-Party Services</h3>
+            <h3 className="text-2xl font-bold mb-2">4. Third-Party Services</h3>
             <p className="text-lg text-gray-300">
               We use <strong>MongoDB Atlas</strong> to securely store your data. MongoDB Atlas is a trusted
               third-party service known for its robust security measures, ensuring your information is safe
@@ -65,15 +57,7 @@ export default function PrivacyPolicy() {
             </p>
           </article>
           <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">6. Children's Privacy</h3>
-            <p className="text-lg text-gray-300">
-              Astro Birb is not intended for children under the age of 13. We do not knowingly collect
-              personal information from users under 13. If you believe we have inadvertently collected such data,
-              please reach out to us immediately, and we will take steps to delete the information.
-            </p>
-          </article>
-          <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">7. Payment Information</h3>
+            <h3 className="text-2xl font-bold mb-2">5. Payment Information</h3>
             <p className="text-lg text-gray-300">
               When you purchase a subscription, the information you provide during the transaction
               will be available to Astro Birbs Operator, Bugsbirt.
@@ -84,7 +68,7 @@ export default function PrivacyPolicy() {
             </p>
           </article>
           <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">8. Changes to This Privacy Policy</h3>
+            <h3 className="text-2xl font-bold mb-2">6. Changes to This Privacy Policy</h3>
             <p className="text-lg text-gray-300">
               We may update this Privacy Policy from time to time to reflect changes in our practices
               or for legal, technical, or regulatory reasons. We will notify you of any significant changes
@@ -93,7 +77,7 @@ export default function PrivacyPolicy() {
             </p>
           </article>
           <article className="mb-8">
-            <h3 className="text-2xl font-bold mb-2">9. Contact Us</h3>
+            <h3 className="text-2xl font-bold mb-2">7. Contact Us</h3>
             <p className="text-lg text-gray-300">
               If you have any questions or concerns about this Privacy Policy, please contact us through Astro Birb's
               Support Server or email us at{" "}
