@@ -44,6 +44,7 @@ export default function Guilds() {
               authorization: `Bearer ${session.accessToken}`,
             },
           });
+          
 
           if (response.ok) {
             const guildsData: Guild[] = await response.json();

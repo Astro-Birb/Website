@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { MongoClient } from "mongodb";
+import { getToken } from "next-auth/jwt";
 
 const uri = process.env.MONGODB_URI || "";
 const client = new MongoClient(uri);
@@ -19,6 +20,19 @@ export default async function handler(
       await client.connect();
       const database = client.db("astro");
       const commentsCollection = database.collection("comments");
+      const session = await getToken({
+        req,
+        secret: process.env.NEXTAUTH_SECRET,
+      });
+
+      if (!session) {
+        return res.status(401).json({ error: "You need to login" });
+      }
+      if (author !== session.name) {
+        return res.status(401).json({ error: "You are not the author" });
+      }
+
+
 
       const newComment = {
         postId,
@@ -27,6 +41,7 @@ export default async function handler(
         content,
         createdAt: new Date(),
       };
+
 
       const result = await commentsCollection.insertOne(newComment);
       console.log("New comment inserted:", result);

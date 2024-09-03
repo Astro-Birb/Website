@@ -1,4 +1,5 @@
 import { MongoClient, ServerApiVersion, ObjectId } from "mongodb";
+
 //@ts-ignore
 export default async function handler(req, res) {
   if (req.method !== "GET") {
