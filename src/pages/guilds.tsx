@@ -38,7 +38,7 @@ export default function Guilds() {
         setIsLoading(true);
 
         try {
-          const response = await fetch("/api/discord/guild", {
+          const response = await fetch("/api/guilds", {
             headers: {
               //@ts-ignore
               authorization: `Bearer ${session.accessToken}`,
