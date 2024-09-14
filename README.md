@@ -1,8 +1,15 @@
 ## Getting Started
 
 1. Clone the repository.
-2. Install the dependencies.
-3. Run the development server.
+2. `bun install`
+3. Setup the .env
+4. `bun dev`
+
+### Production Build
+
+1. `bun install`
+2. `bun build`
+3. `bun start`
 
 ## Contributing
  Contributions are welcome! Please open an issue or submit a pull request. 
