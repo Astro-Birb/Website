@@ -109,7 +109,7 @@ export default function Home() {
                   Promote in seconds
                 </h3>
                 <p className="text-gray-300 text-center">
-                  Instead of spending 10 minutes to promote someone, just /promote. It's that easy.
+                  You can easily promote people, just /promote. It's that easy.
                 </p>
               </div>
 
