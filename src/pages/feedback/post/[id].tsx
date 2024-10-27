@@ -28,7 +28,7 @@ interface UserRoles {
 }
 
 const userRoles: UserRoles = {
-  bugsbirt: "operator",
+  bugze: "operator",
   markination: "operator",
   zippybonzo: "admin",
 };

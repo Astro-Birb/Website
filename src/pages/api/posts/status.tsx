@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const userRoles = {
-    bugsbirt: "operator",
+    bugze: "operator",
     markination: "operator",
     zippybonzo: "admin",
   };
