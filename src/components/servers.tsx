@@ -12,7 +12,7 @@ const servers = [
     logo: "https://cdn.discordapp.com/icons/1148053174247243776/dbbd0e204d54c054d5700dbb8bdcc63f.webp?size=1024",
   },
   {
-    name: "Brownard County Roleplay",
+    name: "Broward County Roleplay",
     members: "13,000",
     logo: "https://cdn.discordapp.com/icons/1026286407997722705/facb17316bbbcb6b3515f59790885ac2.webp?size=1024&width=486&height=486",
   },
