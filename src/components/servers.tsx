@@ -2,13 +2,25 @@ import React from "react";
 
 const servers = [
   {
+    name: "Florida State Roleplay",
+    members: "17,000",
+    logo: "https://cdn.discordapp.com/icons/1036752281858744410/619f5c96b200a0881119e591925d0dd9.webp?size=1024&width=486&height=486",
+  },
+  {
+    name: "Soundboard Hub",
+    members: "22,000",
+    logo: "https://cdn.discordapp.com/icons/1148053174247243776/dbbd0e204d54c054d5700dbb8bdcc63f.webp?size=1024",
+  },
+  {
+    name: "Brownard County Roleplay",
+    members: "13,000",
+    logo: "https://cdn.discordapp.com/icons/1026286407997722705/facb17316bbbcb6b3515f59790885ac2.webp?size=1024&width=486&height=486",
+  },
+  {
     name: "ERM Systems",
     members: "3,000",
     logo: "https://cdn.discordapp.com/icons/987798554972143728/1d4ffdb407b2454c41a1129418fd0891.webp?size=1024&width=486&height=486",
   },
-  { name: "Florida State Roleplay", members: "17,000", logo: "https://cdn.discordapp.com/icons/1036752281858744410/619f5c96b200a0881119e591925d0dd9.webp?size=1024&width=486&height=486" },
-  { name: "Astro Birb", members: "800", logo: "https://cdn.discordapp.com/avatars/1113245569490616400/6ccfe7688b7a5f6c4e8927ae482a450c.webp?size=1024&width=486&height=486" },
-  { name: "Brownard County Roleplay", members: "13,000", logo: "https://cdn.discordapp.com/icons/1026286407997722705/facb17316bbbcb6b3515f59790885ac2.webp?size=1024&width=486&height=486" },
 ];
 
 const TrustedServers = () => {
