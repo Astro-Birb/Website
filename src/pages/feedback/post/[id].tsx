@@ -236,7 +236,7 @@ const PostPage = () => {
 
   if (loading)
     return (
-      <div className="absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 z-50">
+      <div className="dark absolute inset-0 flex flex-col justify-center items-center bg-black bg-opacity-50 z-50">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="3em"
@@ -266,7 +266,7 @@ const PostPage = () => {
   }
 
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-b from-zinc-950 to-neutral-950 border-zinc-900 text-white font-sans">
+    <div className="dark flex flex-col min-h-screen bg-gradient-to-b from-zinc-950 to-neutral-950 border-zinc-900 text-white font-sans">
       <div className="fixed top-0 left-0 w-full z-50 bg-zinc-950 shadow-md">
         <Header />
       </div>
