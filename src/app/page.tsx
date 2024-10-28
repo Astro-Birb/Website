@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <div className="overflow-auto flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black text-white font-sans">
       <Header />
-      <main className="flex-grow mt-16">
-        <div className="flex flex-col items-center justify-center h-screen px-4 sm:scale-90 md:scale-100">
+      <main className="relative flex-grow md:mt-16 sm:mb-72">
+        <div className="flex flex-col items-center justify-center h-screen px-4 sm:scale-90 md:scale-100 mt-28 md:mt-0">
           <img
             src="/spinny.gif"
             alt="Astro Birb Logo"
@@ -34,7 +34,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <button className="px-6 py-3  font-semibold bg-indigo-600 border-indigo-900 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition-colors">
+                <button className="px-6 py-3 font-semibold bg-indigo-600 border-indigo-900 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition-colors">
                   Add To Discord
                 </button>
               </a>
@@ -44,7 +44,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <button className="px-6 py-3 text-pretty  bg-gray-800 border border-gray-700 font-semibold text-white rounded-lg shadow-lg hover:bg-gray-700 transition-colors">
+                <button className="px-6 py-3 text-pretty bg-gray-800 border border-gray-700 font-semibold text-white rounded-lg shadow-lg hover:bg-gray-700 transition-colors">
                   Support Server
                 </button>
               </a>
@@ -159,8 +159,8 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative w-full max-w-sm shadow-lg sm:bottom-11">
-            <div className="absolute inset-0  bg-gray-700 opacity-30 rounded-lg border border-gray-500 transform scale-x-105 scale-y-110 z-0"></div>
+          <div className="relative w-full max-w-sm shadow-lg sm:bottom-11 mt-12">
+            <div className="absolute inset-0 bg-gray-700 opacity-30 rounded-lg border border-gray-500 transform scale-x-105 scale-y-110 z-0"></div>
             <img
               src="/assets/panel.png"
               alt="List Image"
