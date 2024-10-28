@@ -34,8 +34,8 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <button className="px-6 py-3 bg-indigo-500 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition-colors">
-                  Invite Bot
+                <button className="px-6 py-3  font-semibold bg-indigo-600 border-indigo-900 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition-colors">
+                  Add To Discord
                 </button>
               </a>
               <a
@@ -44,7 +44,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="inline-block"
               >
-                <button className="px-6 py-3 bg-gray-800 border border-gray-600 text-white rounded-lg shadow-lg hover:bg-gray-700 transition-colors">
+                <button className="px-6 py-3 text-pretty  bg-gray-800 border border-gray-700 font-semibold text-white rounded-lg shadow-lg hover:bg-gray-700 transition-colors">
                   Support Server
                 </button>
               </a>
@@ -81,7 +81,7 @@ export default function Home() {
                 MESSAGE QUOTA
               </h2>
             </div>
-            <h1 className="text-3xl font-bold mb-4 text-gray-100">
+            <h1 className="text-pretty text-3xl font-semibold tracking-tight text-gray-100 sm:text-4xl mb-4 ">
               Track your staff members' activity
             </h1>
             <p className="text-gray-400 mb-6">
@@ -122,7 +122,7 @@ export default function Home() {
         </div>
 
         {/* Staff Panel Section */}
-        <div className="relative flex flex-col md:flex-row-reverse items-center justify-between p-8 max-w-screen-lg mx-auto md:mr-64 space-y- md:space-y-0 md:space-x-8 text-gray-900 rounded-lg mt-8">
+        <div className="relative flex flex-col md:flex-row-reverse items-center justify-between p-8 max-w-screen-lg mx-auto md:mr-64 space-y- md:space-y-0 md:space-x-8 text-gray-900 rounded-lg">
           <div className="absolute inset-0 -top-4 -right-4 w-full h-full border-2 border-gray-500 opacity-20 rounded-lg transform scale-105 -z-10"></div>
           <div className="max-w-md text-center md:text-right">
             <div className="flex items-center justify-center md:justify-end mb-4">
@@ -144,7 +144,7 @@ export default function Home() {
                 STAFF PANEL
               </h2>
             </div>
-            <h1 className="text-3xl font-bold mb-4 text-white">
+            <h1 className="text-pretty text-3xl font-semibold tracking-tight text-gray-100 sm:text-4xl mb-4 ">
               Introduce your staff
             </h1>
             <p className="text-gray-400 mb-6">
@@ -159,8 +159,8 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative w-full max-w-sm shadow-lg">
-            <div className="absolute inset-0 bg-gray-700 opacity-30 rounded-lg border border-gray-500 transform scale-x-105 scale-y-110 z-0"></div>
+          <div className="relative w-full max-w-sm shadow-lg sm:bottom-11">
+            <div className="absolute inset-0  bg-gray-700 opacity-30 rounded-lg border border-gray-500 transform scale-x-105 scale-y-110 z-0"></div>
             <img
               src="/assets/panel.png"
               alt="List Image"
@@ -205,7 +205,7 @@ export default function Home() {
                 INFRACTIONS
               </h2>
             </div>
-            <h1 className="text-3xl font-bold mb-4 text-gray-100">
+            <h1 className="text-pretty text-3xl font-semibold tracking-tight text-gray-100 sm:text-4xl mb-4 ">
               Punish your staff members
             </h1>
             <p className="text-gray-400 mb-6">
@@ -244,35 +244,59 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent my-4" />
+        <div className="relative">
+          <svg
+            className="absolute top-[-250px] left-1/2 transform -translate-x-1/2"
+            width="1024"
+            height="1024"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <radialGradient
+                id="glowGradient"
+                cx="50%"
+                cy="50%"
+                r="50%"
+                fx="50%"
+                fy="50%"
+              >
+                <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.125" />
+                <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="512" cy="512" r="512" fill="url(#glowGradient)" />
+          </svg>
 
-        <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-          <div className="max-w-screen-md">
-            <h2 className="mb-4 text-4xl font-bold text-indigo-400">
-              Get involved
-            </h2>
-            <p className="mb-8 text-gray-400">
-              Astro Birb is constantly evolving because of your ideas. If you
-              have any feedback, join the Support Server.
-            </p>
-            <div className="flex gap-3 items-center justify-start">
-              <a
-                href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands"
-                className="inline-flex items-center px-6 py-3 font-medium bg-indigo-500 text-white rounded-lg shadow-lg hover:bg-indigo-600 transition-colors"
-              >
-                Get Started
-              </a>
-              <a
-                href="https://discord.gg/DhWdgfh3hN"
-                className="inline-flex items-center px-6 py-3 font-medium text-white border border-gray-600 rounded-lg hover:bg-gray-800 transition-colors"
-              >
-                Support Server
-              </a>
+          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent my-4" />
+
+          <div className="py-12 px-6 mx-auto max-w-screen-lg sm:py-20 lg:px-8">
+            <div className="max-w-screen-md mx-auto text-center">
+              <h2 className="text-4xl font-bold tracking-tight text-gradient-to-br from-indigo-600 to-indigo-700 mb-6">
+                Get Involved with Astro Birb
+              </h2>
+              <p className="mb-10 text-lg text-gray-300">
+                Your ideas are the heart of Astro Birb's growth. Join our
+                community and share your feedback to help shape the future.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+                <a
+                  href="https://discord.com/api/oauth2/authorize?client_id=1113245569490616400&permissions=429765553360&scope=bot%20applications.commands"
+                  className="inline-flex items-center px-10 py-3 text-lg font-semibold text-white rounded-full shadow-lg bg-gradient-to-r from-indigo-500 via-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 transform hover:scale-110 hover:shadow-2xl transition duration-200"
+                >
+                  Get Started
+                </a>
+                <a
+                  href="https://discord.gg/DhWdgfh3hN"
+                  className="inline-flex items-center px-10 py-3 text-lg font-semibold text-gray-200 bg-gray-800 rounded-full border border-gray-700 hover:bg-gray-700 hover:text-white transform hover:scale-110 hover:shadow-xl transition duration-200"
+                >
+                  Support Server
+                </a>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent my-4" />
+          <div className="w-full h-[2px] bg-gradient-to-r from-transparent via-zinc-900 to-transparent my-4" />
+        </div>
       </main>
       <Footer />
     </div>

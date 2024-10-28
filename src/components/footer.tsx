@@ -36,11 +36,6 @@ export default function Footer() {
                     Support Server
                   </a>
                 </li>
-                <li className="mb-4">
-                  <a href="/roadmap" className="hover:underline">
-                    Road Map
-                  </a>
-                </li>
               </ul>
             </div>
             <div>
