@@ -78,10 +78,6 @@ export function InfractionView({
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Infractions
       </Button>
-
-      {/* Rest of the JSX remains the same as in the original file,
-          just update the handlers to use the new handleEdit and handleDelete */}
-      // ...existing code...
     </div>
   )
 }
