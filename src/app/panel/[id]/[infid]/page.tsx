@@ -4,6 +4,9 @@ import { notFound, redirect } from "next/navigation"
 import { InfractionDetail } from "./infraction-detail"
 import Header from "@/components/header"
 import { Link } from 'next-view-transitions'
+import UnauthorizedScreen from "@/components/unauthorised"
+
+
 
 async function getInfraction(guildId: string, infractionId: string) {
   const res = await fetch(`${process.env.SITE}/api/infractions/${guildId}/${infractionId}`, {
@@ -15,7 +18,7 @@ async function getInfraction(guildId: string, infractionId: string) {
   
   if (!res.ok) {
     if (res.status === 403){
-      return notFound()
+      return 403
     }
       
     if (res.status === 404) return notFound()
@@ -34,6 +37,16 @@ export default async function InfractionPage({
   if (!session) redirect("/")
 
   const infraction = await getInfraction(params.id, params.infid)
+  if (infraction === 403) return <UnauthorizedScreen />
+
+  if (!infraction) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <p className="text-center text-white">Could not find that infraction.</p>
+      </div>
+    )
+  }
+
 
   return (
     <>
