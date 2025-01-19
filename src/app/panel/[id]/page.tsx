@@ -11,7 +11,7 @@ async function getGuildData(id: string) {
       'Cookie': cookies().toString()
     }
   })
-  if (!res.ok) throw new Error('Failed to fetch guild')
+  if (!res.ok) throw new Error('Can\'t find that server.')
   return res.json()
 }
 
@@ -21,7 +21,8 @@ async function getInfractions(id: string) {
       'Cookie': cookies().toString()
     }
   })
-  if (!res.ok) throw new Error('Failed to fetch infractions')
+
+  if (!res.ok) throw new Error('You are unauthorised from accessing this. (If this is a mistake contact support)')
   return res.json()
 }
 

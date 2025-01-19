@@ -14,8 +14,12 @@ async function getInfraction(guildId: string, infractionId: string) {
   })
   
   if (!res.ok) {
+    if (res.status === 403){
+      return notFound()
+    }
+      
     if (res.status === 404) return notFound()
-    throw new Error('Failed to fetch infraction')
+    throw new Error('You are unauthorised from accessing this. (If this is a mistake contact support)')
   }
   
   return res.json()
