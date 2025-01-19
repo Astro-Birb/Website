@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { withAuth, makeApiRequest } from "@/utils/api-middleware";
 import { redisClient } from "@/utils/redis";
 
+
 export const dynamic = "force-dynamic";
 
 async function handleUpdate(

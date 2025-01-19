@@ -6,7 +6,6 @@ import type { MutualGuildsResponse } from "@/types/discord";
 interface GuildParams {
   id: string;
 }
-
 export const dynamic = "force-dynamic";
 
 export const GET = (request: Request, context: { params: GuildParams }) =>
