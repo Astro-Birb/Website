@@ -7,6 +7,12 @@
 .font-display {
   font-family: 'Poppins', sans-serif; /* Or any font you prefer */
 }
+
+.cool-font {
+  font-family: 'Montserrat', sans-serif;
+
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
