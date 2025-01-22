@@ -3,7 +3,6 @@ import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 import { InfractionDetail } from "./infraction-detail"
 import Header from "@/components/header"
-import { Link } from 'next-view-transitions'
 import UnauthorizedScreen from "@/components/unauthorised"
 
 

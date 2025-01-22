@@ -36,7 +36,7 @@ function MultiSelect({ roles, placeholder, selectedRoles, onRolesChange }: Multi
           variant="outline"
           role="combobox"
           aria-expanded={open}
-          className="w-full justify-between border-zinc-700 bg-[#1E1F22] text-zinc-200 hover:bg-zinc-700/50 hover:text-white"
+          className="w-full justify-between border-gray-700 bg-[#1E1F22] text-zinc-200 hover:bg-zinc-700/50 hover:text-white"
         >
           {selectedRoles.length > 0 ? `${selectedRoles.length} selected` : placeholder}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -72,7 +72,7 @@ function MultiSelect({ roles, placeholder, selectedRoles, onRolesChange }: Multi
   )
 }
 
-export function MainContent() {
+export function MainContent({ guild }) {
   const [selectedStaffRoles, setSelectedStaffRoles] = React.useState<string[]>([])
   const [selectedAdminRoles, setSelectedAdminRoles] = React.useState<string[]>([])
 
@@ -85,7 +85,7 @@ export function MainContent() {
 
         <div className="space-y-4 rounded-lg bg-[#2B2D31] p-6">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Staff Roles</label>
+            <label className="text-sm font-bold text-white">Staff Roles</label>
             <MultiSelect
               roles={staffRoles}
               placeholder="Select staff roles..."
@@ -95,7 +95,7 @@ export function MainContent() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium text-white">Admin Roles</label>
+            <label className="text-sm font-bold text-white">Admin Roles</label>
             <MultiSelect
               roles={adminRoles}
               placeholder="Select admin roles..."

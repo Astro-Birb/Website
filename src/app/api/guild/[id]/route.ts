@@ -27,7 +27,7 @@ export const GET = (request: Request, context: { params: GuildParams }) =>
     const mutualData = (await makeApiRequest(
       `${
         process.env.PROD_API_URL || "https://api.astrobirb.dev"
-      }/mutual_servers?perm=admin&auth=${process.env.API_AUTH}`,
+      }/mutual_servers?auth=${process.env.API_AUTH}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -1,34 +1,45 @@
-"use client"
+import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { MainContent } from "@/components/dashboard/permissions";
+import { cookies } from "next/headers";
+import Dashboard from "./dashboard";
+import { auth } from "~/auth";
+import { redirect } from "next/navigation";
+import UnauthorizedScreen from "@/components/unauthorised";
 
-import { useState, useEffect } from "react"
-import { TopNavBar } from "@/components/dashboard/dashnav"
-import { Sidebar } from "@/components/dashboard/sidebar"
-import { MainContent } from "@/components/dashboard/permissions"
+async function GetGuild(params: { id: string }) {
+  console.log(params.id)
+  const res = await fetch(`${process.env.SITE}/api/guild/${params.id}`, {
+    headers: {
+      Cookie: cookies().toString(),
+    },
+    cache: "no-store",
+  });
+  const response = await res.json();
+  if (response.mutualGuilds.length === 0){
+    return 403;
+  } 
+    
+  if (!res.ok) {
 
+    if (res.status === 403) {
 
-export default function ServerDashboard() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      return 403;
     }
-    checkIsMobile()
-    window.addEventListener("resize", checkIsMobile)
-    return () => window.removeEventListener("resize", checkIsMobile)
-  }, [])
-
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen)
-
-  return (
-    <div className="h-screen flex flex-col bg-[#1E1F22]">
-      <TopNavBar onToggleSidebar={toggleSidebar} />
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar isMobile={isMobile} isOpen={isSidebarOpen} />
-        <MainContent />
-      </div>
-    </div>
-  )
+  }
+  return response;
 }
 
+export default async function Page({ params }: { params: { id: string } }) {
+  const session = await auth();
+  if (!session) redirect("/");
+  const guildData = await GetGuild({ id: params.id });
+  console.log(guildData);
+  if (guildData === 403) return <UnauthorizedScreen />;
+
+  return (
+    <>
+      <Dashboard guildData={guildData.mutualGuilds[0]} />
+    </>
+  );
+}

@@ -42,7 +42,7 @@ export const GET = (request: Request) =>
       console.log("Request body:", requestBody);
 
       const mutualGuilds = await fetchWithRetry<MutualGuildsResponse>(
-        `${process.env.PROD_API_URL || "https://api.astrobirb.dev"}/mutual_servers?perm=staff&auth=${process.env.API_AUTH}`,
+        `${process.env.PROD_API_URL || "https://api.astrobirb.dev"}/mutual_servers?auth=${process.env.API_AUTH}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
