@@ -1,80 +1,93 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from "@/components/ui/command"
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover"
-
-const staffRoles = [
-  { label: "Moderator", value: "mod" },
-  { label: "Administrator", value: "admin" },
-  { label: "Helper", value: "helper" },
-]
-
-const adminRoles = [
-  { label: "Owner", value: "owner" },
-  { label: "Administrator", value: "admin" },
-  { label: "Moderator", value: "mod" },
-]
+import * as React from "react";
+import { Check, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
 
 interface MultiSelectProps {
-  roles: { label: string; value: string }[]
-  placeholder: string
-  selectedRoles: string[]
-  onRolesChange: (roles: string[]) => void
+  roles: { name: string; id: string }[];
+  placeholder: string;
+  selectedRoles: string[];
+  onRolesChange: (roles: string[]) => void;
 }
 
-function MultiSelect({ roles, placeholder, selectedRoles, onRolesChange }: MultiSelectProps) {
-  const [open, setOpen] = React.useState(false)
+export function MultiSelect({
+  roles,
+  placeholder,
+  selectedRoles,
+  onRolesChange,
+}: MultiSelectProps) {
+  const [open, setOpen] = React.useState(false);
+
+  const toggleRoleSelection = (roleId: string) => {
+    const isSelected = selectedRoles.includes(roleId);
+    onRolesChange(
+      isSelected
+        ? selectedRoles.filter((id) => id !== roleId)
+        : [...selectedRoles, roleId]
+    );
+  };
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          role="combobox"
-          aria-expanded={open}
-          className="w-full justify-between border-gray-700 bg-[#1E1F22] text-zinc-200 hover:bg-zinc-700/50 hover:text-white"
+          className="w-full justify-between border-gray-700 bg-[#1E1F22] text-zinc-200 hover:bg-zinc-700/50"
         >
-          {selectedRoles.length > 0 ? `${selectedRoles.length} selected` : placeholder}
-          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          {selectedRoles.length > 0
+            ? `${selectedRoles.length} selected`
+            : placeholder}
+          <ChevronDown className="ml-2 h-4 w-4 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-full p-0 bg-[#1E1F22] border-zinc-700">
-        <Command className="bg-[#1E1F22]">
-          <CommandInput placeholder="Search roles..." className="text-zinc-200" />
-          <CommandEmpty className="text-zinc-400">No role found.</CommandEmpty>
-          <CommandGroup>
-            {roles.map((role) => (
-              <CommandItem
-                key={role.value}
-                onSelect={() => {
-                  onRolesChange(
-                    selectedRoles.includes(role.value)
-                      ? selectedRoles.filter((item) => item !== role.value)
-                      : [...selectedRoles, role.value],
-                  )
-                }}
-                className="text-zinc-200 hover:bg-zinc-700/50"
-              >
-                <Check
-                  className={cn("mr-2 h-4 w-4", selectedRoles.includes(role.value) ? "opacity-100" : "opacity-0")}
-                />
-                {role.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </Command>
+      <PopoverContent
+        className="max-h-64 overflow-y-auto bg-[#1E1F22] border-zinc-700 text-zinc-200 rounded-lg scrollbar-none"
+        style={{
+          scrollbarWidth: "none", 
+          msOverflowStyle: "none",
+        }}
+      >
+        <ul className="divide-y divide-gray-700">
+          {roles.map((role) => (
+            <li
+              key={role.id}
+              onClick={() => toggleRoleSelection(role.id)}
+              className={cn(
+                "flex items-center justify-between p-2 cursor-pointer hover:bg-zinc-700/50",
+                selectedRoles.includes(role.id) && "font-bold"
+              )}
+            >
+              <span>{role.name}</span>
+              {selectedRoles.includes(role.id) && (
+                <Check className="h-4 w-4 text-green-500" />
+              )}
+            </li>
+          ))}
+        </ul>
       </PopoverContent>
     </Popover>
-  )
+  );
 }
 
+
+
+
 export function MainContent({ guild }) {
-  const [selectedStaffRoles, setSelectedStaffRoles] = React.useState<string[]>([])
-  const [selectedAdminRoles, setSelectedAdminRoles] = React.useState<string[]>([])
+  const [selectedStaffRoles, setSelectedStaffRoles] = React.useState<string[]>([]);
+  const [selectedAdminRoles, setSelectedAdminRoles] = React.useState<string[]>([]);
+
+  const staffRoles = guild.roles || [];
+  const adminRoles = guild.roles || [];
+
+  console.log("Staff Roles:", staffRoles); 
+  console.log("Admin Roles:", adminRoles);
 
   return (
     <div className="flex-1 bg-[#313338] overflow-auto">
@@ -97,8 +110,8 @@ export function MainContent({ guild }) {
           <div className="space-y-2">
             <label className="text-sm font-bold text-white">Admin Roles</label>
             <MultiSelect
-              roles={adminRoles}
-              placeholder="Select admin roles..."
+              roles={staffRoles}
+              placeholder="Select staff roles..."
               selectedRoles={selectedAdminRoles}
               onRolesChange={setSelectedAdminRoles}
             />
@@ -106,6 +119,5 @@ export function MainContent({ guild }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
