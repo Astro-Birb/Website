@@ -1,6 +1,3 @@
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { MainContent } from "@/components/dashboard/permissions";
 import { cookies } from "next/headers";
 import Dashboard from "./dashboard";
 import { auth } from "~/auth";
@@ -8,7 +5,6 @@ import { redirect } from "next/navigation";
 import UnauthorizedScreen from "@/components/unauthorised";
 
 async function GetGuild(params: { id: string }) {
-  console.log(params.id)
   const res = await fetch(`${process.env.SITE}/api/guild/${params.id}`, {
     headers: {
       Cookie: cookies().toString(),

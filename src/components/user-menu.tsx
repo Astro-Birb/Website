@@ -46,12 +46,12 @@ export function UserMenu({ user }: UserMenuProps) {
           <div className="px-2 py-2">
             <Menu.Item>
               {({ active }) => (
-                <button
-                  onClick={() => signOut()}
+                <Link
+                  href="/api/auth/signout"
                   className={`${active ? "bg-gray-800 text-white" : "text-gray-300"} group flex w-full items-center rounded-md px-4 py-2 text-sm`}
                 >
                   Sign Out
-                </button>
+                </Link>
               )}
             </Menu.Item>
             <Menu.Item>
