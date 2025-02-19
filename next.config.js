@@ -22,6 +22,11 @@ const nextConfig = {
       source: '/status',
       destination: 'https://status.astrobirb.dev',
       permanent: true,
+    },
+    {
+      source: '/qa',
+      destination: 'https://ermbot.xyz/1092976553752789054/62b489be-19b1-4e9f-a9ad-32a1cc003fe2/application',
+      permanent: true,
     }
     ];
   },
