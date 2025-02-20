@@ -30,7 +30,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [Discord({
     clientId: process.env.DISCORD_CLIENT_ID!,
     clientSecret: process.env.DISCORD_CLIENT_SECRET!,
-    authorization: "https://discord.com/api/oauth2/authorize?scope=identify+email+guilds"
+    authorization: "https://discord.com/api/oauth2/authorize?scope=identify+guilds"
   })],
   callbacks: {
     async jwt({ token, account, profile }: any) {

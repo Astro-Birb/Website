@@ -32,7 +32,7 @@ const nextConfig = {
   },
   output: 'standalone',
   images: {
-    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com', 'cdn.discordapp.com', 'corsproxy.io', 'www.roblox.com', 'thumbnails.roblox.com', 'tr.rbxcdn.com']
+    domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com', 'cdn.discordapp.com', 'corsproxy.io', 'www.roblox.com', 'thumbnails.roblox.com', 'tr.rbxcdn.com', 'github.com', 'github.com']
 
   }
   
