@@ -1,29 +1,38 @@
-import React from "react"
-import { ScrollArea } from "@/components/ui/scroll-area"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import Image from "next/image"
-import { Hash } from "lucide-react"
+"use client";
+import React, { useState, useEffect } from "react";
+import {
+  DiscordMessages,
+  DiscordMessage,
+  DiscordMention,
+  DiscordEmbed,
+  DiscordEmbedFields,
+  DiscordEmbedField,
+  DiscordEmbedDescription,
+} from "@skyra/discord-components-react";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { Hash } from "lucide-react";
+import Head from "next/head";
 
 interface Embed {
-  title?: string
-  description?: string
-  color?: number
-  image?: { url: string }
-  thumbnail?: { url: string }
-  footer?: { text: string; icon_url?: string }
-  fields?: { name: string; value: string }[]
-  author?: { name: string; url?: string; icon_url?: string }
+  title?: string;
+  description?: string;
+  color?: number;
+  image?: { url: string };
+  thumbnail?: { url: string };
+  footer?: { text: string; icon_url?: string };
+  fields?: { name: string; value: string }[];
+  author?: { name: string; url?: string; icon_url?: string };
 }
 
 interface Message {
-  author_id: string
-  content: string
-  author_name: string
-  message_id: string
-  author_avatar: string
-  attachments: string[]
-  embeds: Embed[]
-  timestamp: number
+  author_id: string;
+  content: string;
+  author_name: string;
+  message_id: string;
+  author_avatar: string;
+  attachments: string[];
+  embeds: Embed[];
+  timestamp: number;
 }
 
 function formatTimestamp(timestamp: number): string {
@@ -31,7 +40,7 @@ function formatTimestamp(timestamp: number): string {
     hour: "numeric",
     minute: "numeric",
     hour12: true,
-  })
+  });
 }
 
 function formatDate(timestamp: number): string {
@@ -39,92 +48,57 @@ function formatDate(timestamp: number): string {
     month: "long",
     day: "numeric",
     year: "numeric",
-  })
+  });
 }
 
 function EmbedCard({ embed }: { embed: Embed }) {
+  const embedColor = embed.color
+    ? `#${embed.color.toString(16).padStart(6, "0")}`
+    : "#4e5058";
+
   return (
-    <div
-      className="mt-2 bg-[#2f3136] rounded-lg overflow-hidden border-l-4"
-      style={{ borderLeftColor: embed.color ? `#${embed.color.toString(16).padStart(6, "0")}` : "#4e5058" }}
-    >
-      <div className="p-4">
-        {embed.author && (
-          <div className="mb-2 flex items-center text-xs text-[#72767d]">
-            {embed.author.icon_url && (
-              <Image src={embed.author.icon_url} alt="Author Icon" width={20} height={20} className="mr-2 rounded-full" />
-            )}
-            <span>{embed.author.name}</span>
-          </div>
-        )}
-        {embed.title && (
-          <h3 className="font-semibold mb-2 text-white">{parseContent(embed.title)}</h3>
-        )}
-        {embed.description && (
-          <p className="text-sm text-[#dcddde] whitespace-pre-wrap break-words">{parseContent(embed.description)}</p>
-        )}
-        {embed.image && (
-          <div className="mt-2">
-            <Image src={embed.image.url} alt="Embed Image" width={300} height={200} className="rounded-md" />
-          </div>
-        )}
-        {embed.thumbnail && (
-          <div className="mt-2">
-            <Image src={embed.thumbnail.url} alt="Embed Thumbnail" width={100} height={100} className="rounded-md" />
-          </div>
-        )}
-        {embed.footer && (
-          <div className="mt-2 flex items-center text-xs text-[#72767d]">
-            {embed.footer.icon_url && (
-              <Image src={embed.footer.icon_url} alt="Footer Icon" width={20} height={20} className="mr-2 rounded-full" />
-            )}
-            <span>{embed.footer.text}</span>
-          </div>
-        )}
-        {embed.fields && (
-          <div className="mt-2 space-y-2">
-            {embed.fields.map((field, index) => (
-              <div key={index}>
-                <div className="font-semibold text-white">{field.name}</div>
-                <div className="text-sm text-[#dcddde] whitespace-pre-wrap break-words">{parseContent(field.value)}</div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-    </div>
-  )
+    <DiscordEmbed color={embedColor}>
+      {embed.title && (
+        <DiscordEmbedDescription>{embed.title}</DiscordEmbedDescription>
+      )}
+      {embed.description && (
+        <DiscordEmbedDescription>{embed.description}</DiscordEmbedDescription>
+      )}
+
+      {embed.fields && embed.fields.length > 0 && (
+        <DiscordEmbedFields>
+          {embed.fields.map((field, index) =>
+            field.name && field.value ? (
+              <DiscordEmbedField key={index} fieldTitle={field.name}>
+                {field.value}
+              </DiscordEmbedField>
+            ) : null
+          )}
+        </DiscordEmbedFields>
+      )}
+    </DiscordEmbed>
+  );
 }
 
-
-
 function MessageGroup({ messages }: { messages: Message[] }) {
-  const firstMessage = messages[0]
+  const firstMessage = messages[0];
 
   return (
-    <div className="py-2 px-4 hover:bg-[#32353b] transition-colors duration-100">
-      <div className="flex items-start space-x-4">
-        <Avatar className="w-10 h-10 mt-0.5">
-          <AvatarImage src={firstMessage.author_avatar} alt={firstMessage.author_name} />
-          <AvatarFallback>{firstMessage.author_name.charAt(0)}</AvatarFallback>
-        </Avatar>
-        <div className="flex-1 min-w-0">
-          <div className="flex items-baseline">
-            <span className="font-medium text-[#ffffff]">{firstMessage.author_name}</span>
-            <span className="ml-2 text-xs text-[#a3a6aa]">{formatTimestamp(firstMessage.timestamp)}</span>
-          </div>
-          {messages.map((message, index) => (
-            <div key={message.message_id} className={index > 0 ? "mt-1" : ""}>
-              <p className="text-[#dcddde] break-words">{parseContent(message.content)}</p>
-              {message.embeds.map((embed, embedIndex) => (
-                <EmbedCard key={embedIndex} embed={embed} />
-              ))}
-            </div>
+    <DiscordMessage
+      author={firstMessage.author_name}
+      avatar={firstMessage.author_avatar}
+      timestamp={formatTimestamp(firstMessage.timestamp)}
+    >
+      {messages.map((message, index) => (
+        <div key={message.message_id} className={index > 0 ? "mt-1" : ""}>
+          <p>{parseContent(message.content)}</p>
+          {message.embeds.map((embed, embedIndex) => (
+            <EmbedCard key={embedIndex} embed={embed} />
           ))}
         </div>
-      </div>
-    </div>
-  )
+      ))}
+    </DiscordMessage>
+  );
 }
 
 function parseContent(content: string): React.ReactNode[] {
@@ -140,62 +114,69 @@ function parseContent(content: string): React.ReactNode[] {
       parsedNodes.push(content.slice(currentIndex, offset));
     }
     if (user) {
-      parsedNodes.push(<span className="text-blue-500" key={offset}>@user</span>);
+      parsedNodes.push(<DiscordMention key={offset}>user</DiscordMention>);
     } else if (channel) {
-      parsedNodes.push(<span className="text-green-500" key={offset}>#channel</span>);
+      parsedNodes.push(<DiscordMention key={offset}>channel</DiscordMention>);
     } else if (role) {
-      parsedNodes.push(<span className="text-purple-500" key={offset}>@role</span>);
+      parsedNodes.push(<DiscordMention key={offset}>role</DiscordMention>);
     }
     currentIndex = offset + match.length;
-    return '';  
+    return "";
   });
 
-  content.replace(emojiRegex, (match, isAnimated, emojiName, emojiId, offset) => {
-    if (currentIndex < offset) {
-      parsedNodes.push(content.slice(currentIndex, offset));
+  content.replace(
+    emojiRegex,
+    (match, isAnimated, emojiName, emojiId, offset) => {
+      if (currentIndex < offset) {
+        parsedNodes.push(content.slice(currentIndex, offset));
+      }
+      const emojiUrl = `https://cdn.discordapp.com/emojis/${emojiId}.${
+        isAnimated ? "gif" : "png"
+      }?v=1`;
+      parsedNodes.push(
+        <img
+          key={offset}
+          src={emojiUrl}
+          alt={emojiName}
+          className="inline-block w-5 h-5 align-bottom"
+        />
+      );
+      currentIndex = offset + match.length;
+      return "";
     }
-    const emojiUrl = `https://cdn.discordapp.com/emojis/${emojiId}.${isAnimated ? "gif" : "png"}?v=1`;
-    parsedNodes.push(
-      <img
-        key={offset}
-        src={emojiUrl}
-        alt={emojiName}
-        className="inline-block w-5 h-5 align-bottom"
-      />
-    );
-    currentIndex = offset + match.length;
-    return ''; 
-  });
+  );
 
   content.replace(timestampRegex, (match, timestamp, format, offset) => {
     if (currentIndex < offset) {
       parsedNodes.push(content.slice(currentIndex, offset));
     }
-    const relativeTime = new Date(parseInt(timestamp) * 1000).toLocaleString("en-US", { hour12: false });
+    const relativeTime = new Date(parseInt(timestamp) * 1000).toLocaleString(
+      "en-US",
+      { hour12: false }
+    );
     parsedNodes.push(
       <span key={offset} className="text-[#a3a6aa]" title={relativeTime}>
         {format === "R" ? `at ${relativeTime}` : relativeTime}
       </span>
     );
     currentIndex = offset + match.length;
-    return '';  
+    return "";
   });
 
   if (currentIndex < content.length) {
     parsedNodes.push(content.slice(currentIndex));
   }
+  const lastIndex = 0;
 
   parsedNodes = parsedNodes.flatMap((text) => {
     if (typeof text !== "string") return text;
 
     const parts = [];
-    let match;
-    let lastIndex = 0;
+    let match: RegExpExecArray | null;
 
     while ((match = markdownRegex.exec(text)) !== null) {
-      if (lastIndex < match.index) {
-        parts.push(text.substring(lastIndex, match.index));
-      }
+      let lastIndex = 0;
+      parts.push(text.substring(lastIndex, match.index));
       const symbol = match[1];
       const content = match[2];
 
@@ -204,7 +185,11 @@ function parseContent(content: string): React.ReactNode[] {
       } else if (symbol === "*") {
         parts.push(<em key={lastIndex}>{content}</em>);
       } else if (symbol === "`") {
-        parts.push(<code key={lastIndex} className="bg-gray-700 px-1 rounded">{content}</code>);
+        parts.push(
+          <code key={lastIndex} className="bg-gray-700 px-1 rounded">
+            {content}
+          </code>
+        );
       }
       lastIndex = markdownRegex.lastIndex;
     }
@@ -219,42 +204,68 @@ function parseContent(content: string): React.ReactNode[] {
   return parsedNodes;
 }
 
-export default function DiscordTranscript({ transcript }: { transcript: Message[] }) {
+export default function DiscordTranscript({
+  transcript,
+}: {
+  transcript: Message[];
+}) {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true); // Set the state to true after the initial mount
+  }, []);
+
+  if (!isClient) {
+    return null; // Return null during server-side render to prevent mismatch
+  }
+
   const groupedMessages = transcript.reduce((acc, message) => {
-    const lastGroup = acc[acc.length - 1]
+    const lastGroup = acc[acc.length - 1];
     if (lastGroup && lastGroup[0].author_id === message.author_id) {
-      lastGroup.push(message)
+      lastGroup.push(message);
     } else {
-      acc.push([message])
+      acc.push([message]);
     }
-    return acc
-  }, [] as Message[][])
+    return acc;
+  }, [] as Message[][]);
 
   return (
-    <div className="flex h-screen bg-[#36393f] text-[#dcddde]">
-      <div className="flex-1 flex flex-col">
-        <div className="h-12 border-b border-[#202225] flex items-center px-4">
-          <Hash className="w-6 h-6 text-[#8e9297] mr-2" />
-          <span className="font-semibold text-white">ticket</span>
-        </div>
-        <ScrollArea className="flex-1">
-          <div className="p-4">
-            {groupedMessages.map((group, index) => (
-              <React.Fragment key={group[0].message_id}>
-                {index === 0 ||
-                formatDate(group[0].timestamp) !== formatDate(groupedMessages[index - 1][0].timestamp) ? (
-                  <div className="text-center my-4">
-                    <span className="text-xs bg-[#36393f] text-[#72767d] px-2 py-1 rounded-full">
-                      {formatDate(group[0].timestamp)}
-                    </span>
-                  </div>
-                ) : null}
-                <MessageGroup messages={group} />
-              </React.Fragment>
-            ))}
+    <>
+      <Head>
+        <title>Discord Transcript</title>
+        <meta
+          name="description"
+          content="View the transcript of a Discord conversation."
+        />
+      </Head>
+      <div className="flex h-screen bg-[#36393f] text-[#dcddde]">
+        <div className="flex-1 flex flex-col">
+          <div className="h-12 border-b border-[#202225] flex items-center px-4">
+            <Hash className="w-6 h-6 text-[#8e9297] mr-2" />
+            <span className="font-semibold text-white">ticket</span>
           </div>
-        </ScrollArea>
+          <ScrollArea className="flex-1">
+            <div className="p-4">
+              <DiscordMessages>
+                {groupedMessages.map((group, index) => (
+                  <React.Fragment key={group[0].message_id}>
+                    {index === 0 ||
+                    formatDate(group[0].timestamp) !==
+                      formatDate(groupedMessages[index - 1][0].timestamp) ? (
+                      <div className="text-center my-4">
+                        <span className="text-xs bg-[#36393f] text-[#72767d] px-2 py-1 rounded-full">
+                          {formatDate(group[0].timestamp)}
+                        </span>
+                      </div>
+                    ) : null}
+                    <MessageGroup messages={group} />
+                  </React.Fragment>
+                ))}
+              </DiscordMessages>
+            </div>
+          </ScrollArea>
+        </div>
       </div>
-    </div>
-  )
+    </>
+  );
 }

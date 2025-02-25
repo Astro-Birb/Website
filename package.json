@@ -24,6 +24,8 @@
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.6",
+    "@skyra/discord-components-core": "^3.6.1",
+    "@skyra/discord-components-react": "^3.6.1",
     "all": "^0.0.0",
     "child_process": "^1.0.2",
     "class-variance-authority": "^0.7.1",
