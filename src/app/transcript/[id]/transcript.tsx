@@ -119,6 +119,7 @@ function MessageGroup({ messages }: { messages: Message[] }) {
             <div className="mt-2">
               {message.attachments.map((attachment, attachmentIndex) => {
                 const isImage = attachment.match(/\.(jpg|jpeg|png|gif)$/i);
+                const isVideo = attachment.match(/\.(mp4|webm|ogg)$/i);
                 return (
                   <div key={attachmentIndex} className="mb-2">
                     {isImage ? (
@@ -127,6 +128,11 @@ function MessageGroup({ messages }: { messages: Message[] }) {
                         url={attachment}
                         alt={`Attachment ${attachmentIndex}`}
                       />
+                    ) : isVideo ? (
+                      <video controls className="max-w-full h-auto">
+                        <source src={attachment} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
                     ) : (
                       <a
                         href={attachment}
