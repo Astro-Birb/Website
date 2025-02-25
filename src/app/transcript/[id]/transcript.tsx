@@ -92,14 +92,44 @@ function MessageGroup({ messages }: { messages: Message[] }) {
       {messages.map((message, index) => (
         <div key={message.message_id} className={index > 0 ? "mt-1" : ""}>
           <p>{parseContent(message.content)}</p>
+          
           {message.embeds.map((embed, embedIndex) => (
             <EmbedCard key={embedIndex} embed={embed} />
           ))}
+
+          {message.attachments.length > 0 && (
+            <div className="mt-2">
+              {message.attachments.map((attachment, attachmentIndex) => {
+                const isImage = attachment.match(/\.(jpg|jpeg|png|gif)$/i);
+                return (
+                  <div key={attachmentIndex} className="mb-2">
+                    {isImage ? (
+                      <img
+                        src={attachment}
+                        alt={`Attachment ${attachmentIndex}`}
+                        className="max-w-full rounded-lg"
+                      />
+                    ) : (
+                      <a
+                        href={attachment}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#1d9bf0] hover:underline"
+                      >
+                        Download attachment {attachmentIndex + 1}
+                      </a>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       ))}
     </DiscordMessage>
   );
 }
+
 
 function parseContent(content: string): React.ReactNode[] {
   const mentionRegex = /<@!?(\d+)>|<#(\d+)>|<@&(\d+)>/g;
