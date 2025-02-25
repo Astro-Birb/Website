@@ -3,11 +3,14 @@ import React, { useState, useEffect } from "react";
 import {
   DiscordMessages,
   DiscordMessage,
-  DiscordMention,
   DiscordEmbed,
   DiscordEmbedFields,
   DiscordEmbedField,
   DiscordEmbedDescription,
+  DiscordEmbedFooter,
+  DiscordMention,
+  DiscordAttachment
+
 } from "@skyra/discord-components-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Hash } from "lucide-react";
@@ -57,24 +60,39 @@ function EmbedCard({ embed }: { embed: Embed }) {
     : "#4e5058";
 
   return (
-    <DiscordEmbed color={embedColor}>
-      {embed.title && (
-        <DiscordEmbedDescription>{embed.title}</DiscordEmbedDescription>
-      )}
+    <DiscordEmbed
+      color={embedColor}
+      author-image={embed.author?.icon_url}
+      author-name={embed.author?.name}
+      author-url={embed.author?.url}
+      embed-title={embed.title}
+      image={embed.image?.url}
+      thumbnail={embed.thumbnail?.url}
+    >
       {embed.description && (
-        <DiscordEmbedDescription>{embed.description}</DiscordEmbedDescription>
+        <DiscordEmbedDescription slot="description">
+          {embed.description}
+        </DiscordEmbedDescription>
       )}
 
       {embed.fields && embed.fields.length > 0 && (
-        <DiscordEmbedFields>
-          {embed.fields.map((field, index) =>
-            field.name && field.value ? (
-              <DiscordEmbedField key={index} fieldTitle={field.name}>
-                {field.value}
-              </DiscordEmbedField>
-            ) : null
-          )}
+        <DiscordEmbedFields slot="fields">
+          {embed.fields.map((field, index) => (
+            <DiscordEmbedField key={index} fieldTitle={field.name}>
+              {field.value}
+            </DiscordEmbedField>
+          ))}
         </DiscordEmbedFields>
+      )}
+
+      {embed.footer && (
+        <DiscordEmbedFooter
+          slot="footer"
+          footer-image={embed.footer.icon_url}
+          timestamp={new Date()}
+        >
+          {embed.footer.text}
+        </DiscordEmbedFooter>
       )}
     </DiscordEmbed>
   );
@@ -104,10 +122,10 @@ function MessageGroup({ messages }: { messages: Message[] }) {
                 return (
                   <div key={attachmentIndex} className="mb-2">
                     {isImage ? (
-                      <img
-                        src={attachment}
+                      <DiscordAttachment
+                        slot="attachments"
+                        url={attachment}
                         alt={`Attachment ${attachmentIndex}`}
-                        className="max-w-full rounded-lg"
                       />
                     ) : (
                       <a
@@ -129,7 +147,6 @@ function MessageGroup({ messages }: { messages: Message[] }) {
     </DiscordMessage>
   );
 }
-
 
 function parseContent(content: string): React.ReactNode[] {
   const mentionRegex = /<@!?(\d+)>|<#(\d+)>|<@&(\d+)>/g;
@@ -196,16 +213,15 @@ function parseContent(content: string): React.ReactNode[] {
   if (currentIndex < content.length) {
     parsedNodes.push(content.slice(currentIndex));
   }
-  const lastIndex = 0;
 
   parsedNodes = parsedNodes.flatMap((text) => {
     if (typeof text !== "string") return text;
 
     const parts = [];
+    let lastIndex = 0;
     let match: RegExpExecArray | null;
 
     while ((match = markdownRegex.exec(text)) !== null) {
-      let lastIndex = 0;
       parts.push(text.substring(lastIndex, match.index));
       const symbol = match[1];
       const content = match[2];
