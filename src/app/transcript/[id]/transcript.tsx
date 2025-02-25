@@ -258,11 +258,11 @@ export default function DiscordTranscript({
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); // Set the state to true after the initial mount
+    setIsClient(true); 
   }, []);
 
   if (!isClient) {
-    return null; // Return null during server-side render to prevent mismatch
+    return null;
   }
 
   const groupedMessages = transcript.reduce((acc, message) => {
