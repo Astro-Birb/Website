@@ -39,7 +39,7 @@ export const GET = (_request: Request, context: { params: GuildParams }) =>
           headers: { "Content-Type": "application/json" },
         }
       );    
-      if (permissions.isAdmin === false) {
+      if (permissions.isAdmin === false && permissions.isStaff === false) {
         return new Response(JSON.stringify({ message: "Unauthorized" }), {
           status: 403,
         });
