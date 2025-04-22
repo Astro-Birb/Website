@@ -3,7 +3,7 @@ import React from "react";
 const servers = [
   {
     name: "Florida State Roleplay",
-    members: "17,000",
+    members: "20,000",
     logo: "/assets/servers/fsrp.png",
   },
   {
