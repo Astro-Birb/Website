@@ -9,8 +9,7 @@ import {
   DiscordEmbedDescription,
   DiscordEmbedFooter,
   DiscordMention,
-  DiscordAttachment
-
+  DiscordAttachment,
 } from "@skyra/discord-components-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Hash } from "lucide-react";
@@ -110,7 +109,7 @@ function MessageGroup({ messages }: { messages: Message[] }) {
       {messages.map((message, index) => (
         <div key={message.message_id} className={index > 0 ? "mt-1" : ""}>
           <p>{parseContent(message.content)}</p>
-          
+
           {message.embeds.map((embed, embedIndex) => (
             <EmbedCard key={embedIndex} embed={embed} />
           ))}
@@ -264,7 +263,7 @@ export default function DiscordTranscript({
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true); 
+    setIsClient(true);
   }, []);
 
   if (!isClient) {

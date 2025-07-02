@@ -14,7 +14,6 @@ const channels: Channel[] = [
   { id: '3', name: 'announcements', type: 'locked' },
   { id: '4', name: 'off-topic', type: 'text' },
   { id: '5', name: 'music', type: 'voice' },
-  // Add more channels as needed
 ]
 
 const ChannelIcon = ({ type }: { type: Channel['type'] }) => {
@@ -30,9 +29,9 @@ export function ChannelSelectDropdown() {
   const [selectedChannel, setSelectedChannel] = useState<string>(channels[0].id)
 
   return (
-    <div className='pt-4'>
+    <div >
     <Select value={selectedChannel} onValueChange={setSelectedChannel}>
-      <SelectTrigger className="w-[450px]">
+      <SelectTrigger className="w-full">
         <SelectValue placeholder="Select a channel" />
       </SelectTrigger>
       <SelectContent className="dark">

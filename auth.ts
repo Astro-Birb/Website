@@ -2,7 +2,6 @@ import NextAuth from "next-auth"
 import Discord from "next-auth/providers/discord"
 import { JWT } from "next-auth/jwt"
 
-// Extend the built-in session types
 declare module "next-auth" {
   interface Session {
     user: {
@@ -38,7 +37,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         token.accessToken = account.access_token
         token.refreshToken = account.refresh_token
         token.tokenType = account.token_type
-        token.id = profile.id  // Add Discord user ID
+        token.id = profile.id  
       }
       return token
     },
@@ -47,7 +46,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         session.user.accessToken = token.accessToken
         session.user.refreshToken = token.refreshToken
         session.user.tokenType = token.tokenType
-        session.user.id = token.id  // Add Discord user ID to session
+        session.user.id = token.id  
       }
       return session
     },
