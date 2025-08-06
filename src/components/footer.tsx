@@ -10,7 +10,7 @@ export default function Footer() {
               <img
                 src="/astro-logo.svg"
                 className="h-8 me-3"
-                alt="FlowBite Logo"
+                alt="Die"
               />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Astro Birb
@@ -67,12 +67,12 @@ export default function Footer() {
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="/privacy" className="hover:underline">
+                  <a href="https://github.com/Astro-Birb/readme/blob/main/privacy.md" className="hover:underline">
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="/terms" className="hover:underline">
+                  <a href="https://github.com/Astro-Birb/readme/blob/main/tos.md" className="hover:underline">
                     Terms &amp; Conditions
                   </a>
                 </li>
