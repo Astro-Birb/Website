@@ -38,6 +38,7 @@ const data = {
         {
           title: "Infractions",
           url: "/infractions",
+          isActive: true
         },
         {
           title: "Promotions",

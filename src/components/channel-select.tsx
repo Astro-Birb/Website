@@ -1,23 +1,27 @@
-  id: string
-  name: string
-  type: 'text' | 'voice' | 'locked'
+"use client";
+
+import { useState, useEffect } from "react";
+import { Hash, Volume2, Lock } from 'lucide-react';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
+function getNested(obj: any, path: string) {
+  return path.split(".").reduce((o, k) => o?.[k], obj);
 }
 
-const channels: Channel[] = [
-  { id: '1', name: 'general', type: 'text' },
-  { id: '2', name: 'voice-chat', type: 'voice' },
-  { id: '3', name: 'announcements', type: 'locked' },
-  { id: '4', name: 'off-topic', type: 'text' },
-  { id: '5', name: 'music', type: 'voice' },
-]
-
-const ChannelIcon = ({ type }: { type: Channel['type'] }) => {
-  const icons = {
+const ChannelIcon = ({ type }: { type: string }) => {
+  const icons: Record<string, React.ReactNode> = {
     text: <Hash className="h-4 w-4" />,
     voice: <Volume2 className="h-4 w-4" />,
-    locked: <Lock className="h-4 w-4" />
-  }
-  return <span className="mr-2 text-muted-foreground">{icons[type]}</span>
+    locked: <Lock className="h-4 w-4" />,
+  };
+  return <span className="mr-2 text-muted-foreground">{icons[type] || icons.text}</span>;
+};
 
 interface Channel {
   id: string;
