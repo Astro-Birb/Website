@@ -16,12 +16,6 @@ export const GET = (request: Request, context: { params: GuildParams }) =>
             );
         }
 
-        const cacheKey = `guild:${id}:config`;
-        const cachedData = await getCached(cacheKey);
-        if (cachedData) {
-            return NextResponse.json(cachedData);
-        }
-
         const mutualData = await makeApiRequest(
             `${process.env.PROD_API_URL || "https://api.astrobirb.dev"}/config?auth=${
                 process.env.API_AUTH
@@ -32,7 +26,6 @@ export const GET = (request: Request, context: { params: GuildParams }) =>
         );
 
         const response = { mutualData };
-        await setCached(cacheKey, response, 900);
         return NextResponse.json(response);
     }, context);
 
@@ -49,19 +42,33 @@ export const POST = (request: Request, context: { params: GuildParams }) =>
         const body = await request.json();
         const cacheKey = `guild:${id}:config`;
 
-        const response = await makeApiRequest(
-            `${process.env.PROD_API_URL || "https://api.astrobirb.dev"}/config?auth=${
-                process.env.API_AUTH
-            }&server=${id}`,
-            {
-                method: "POST",
-                body: JSON.stringify(body),
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
+        let response;
+        try {
+            response = await makeApiRequest(
+                `${process.env.PROD_API_URL || "https://api.astrobirb.dev"}/config?auth=${
+                    process.env.API_AUTH
+                }&server=${id}&unstringify=True`,
+                {
+                    method: "POST",
+                    body: JSON.stringify(body),
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+        } catch (err: any) {
+            return NextResponse.json(
+                { message: err?.message || "Unknown error from upstream API" },
+                { status: err?.status || 500 }
+            );
+        }
 
-        await setCached(cacheKey, response, 900);
-        return NextResponse.json(response.config);
+        if (response?.status && response.status !== "success") {
+            return NextResponse.json(
+                { message: response.message || "Upstream API error", ...response },
+                { status: 422 }
+            );
+        }
+
+        return NextResponse.json(response);
     }, context);

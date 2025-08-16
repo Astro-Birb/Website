@@ -32,8 +32,9 @@ async function getGuild(id: string) {
   const data = await res.json();
   if (data.mutualGuilds?.length === 0) throw new Error("unauthorized");
 
-  return data;
+  return JSON.parse(JSON.stringify(data));
 }
+
 
 async function getConfig(id: string) {
   const res = await fetch(`${process.env.SITE}/api/config/${id}`, {
@@ -46,7 +47,7 @@ async function getConfig(id: string) {
   if (res.status === 403) throw new Error("unauthorized");
 
   const data = await res.json();
-  return data;
+  return JSON.parse(JSON.stringify(data));
 }
 
 export default async function Page({
@@ -63,7 +64,8 @@ export default async function Page({
   try {
     const guildData = await getGuild(params.id);
     const configData = await getConfig(params.id);
-
+    const guild = guildData.mutualGuilds?.[0] ?? null;
+    const config = configData.mutualData?.config ?? null;
     return (
       <SidebarProvider
         style={
@@ -89,7 +91,7 @@ export default async function Page({
                 </BreadcrumbItem>
                 <BreadcrumbSeparator className="hidden md:block" />
                 <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                  <BreadcrumbPage>{params.page}</BreadcrumbPage>
                 </BreadcrumbItem>
               </BreadcrumbList>
             </Breadcrumb>
@@ -100,8 +102,8 @@ export default async function Page({
                 <div className="px-4 lg:px-6 space-y-6">
                   <ClientDashboardPage
                     page={params.page}
-                    guildData={guildData}
-                    configData={configData}
+                    guildData={guild}
+                    configData={config}
                   />
                 </div>
               </div>

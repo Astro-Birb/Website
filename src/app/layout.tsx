@@ -27,8 +27,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
         <meta property="og:url" content="https://www.astrobirb.dev" />
         <meta name="theme-color" content="#5b65e8" />
       </head>
-      <body className="bg-[#101521]">
-        <ViewTransitions>
+      <body className="bg-[#101521] dark">
+        <ViewTransitions> 
           <GradientProvider>
             <SessionProviders>
               <ProgressBarProvider>

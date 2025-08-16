@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react"
 import { GalleryVerticalEnd } from "lucide-react"
 
@@ -41,7 +42,6 @@ const data = {
         {
           title: "Promotions",
           url: "#",
-          isActive: true,
         },
         {
           title: "Message Quota",

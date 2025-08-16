@@ -1,8 +1,3 @@
-import { useState } from 'react'
-import { Hash, Volume2, Lock } from 'lucide-react'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-
-type Channel = {
   id: string
   name: string
   type: 'text' | 'voice' | 'locked'
@@ -23,21 +18,71 @@ const ChannelIcon = ({ type }: { type: Channel['type'] }) => {
     locked: <Lock className="h-4 w-4" />
   }
   return <span className="mr-2 text-muted-foreground">{icons[type]}</span>
+
+interface Channel {
+  id: string;
+  name: string;
+  type: string;
 }
 
-export function ChannelSelectDropdown() {
-  const [selectedChannel, setSelectedChannel] = useState<string>(channels[0].id)
+interface ChannelSelectDropdownProps {
+  channels: Channel[];
+  config: any;
+  configKey: string;
+  onChange?: (channelId: string) => void; 
+}
+
+export function ChannelSelectDropdown({
+  channels,
+  config,
+  configKey,
+  onChange,
+}: ChannelSelectDropdownProps) {
+  const initialChannel =
+    getNested(config, configKey) ||
+    (channels && channels.length > 0 ? channels[0].id : "");
+
+  const [selectedChannel, setSelectedChannel] = useState(initialChannel);
+
+  useEffect(() => {
+    const currentValue = getNested(config, configKey);
+    const defaultValue = channels && channels.length > 0 ? channels[0].id : "";
+    setSelectedChannel(currentValue || defaultValue);
+  }, [config, configKey, channels]);
+
+  const handleSelect = (value: string) => {
+    setSelectedChannel(value);
+    if (onChange) onChange(value);
+  };
+
+  if (!channels || channels.length === 0) {
+    return (
+      <Select disabled>
+        <SelectTrigger className="w-full">
+          <SelectValue placeholder="No channels available" />
+        </SelectTrigger>
+      </Select>
+    );
+  }
 
   return (
-    <div >
-    <Select value={selectedChannel} onValueChange={setSelectedChannel}>
+    <Select value={selectedChannel} onValueChange={handleSelect}>
       <SelectTrigger className="w-full">
-        <SelectValue placeholder="Select a channel" />
+        <SelectValue placeholder="Select a channel">
+          {selectedChannel && (
+            <div className="flex items-center">
+              <ChannelIcon 
+                type={channels.find(c => c.id === selectedChannel)?.type || "text"} 
+              />
+              <span>{channels.find(c => c.id === selectedChannel)?.name}</span>
+            </div>
+          )}
+        </SelectValue>
       </SelectTrigger>
-      <SelectContent className="dark">
+      <SelectContent>
         {channels.map((channel) => (
-          <SelectItem className="dark" key={channel.id} value={channel.id}>
-            <div className="flex items-center dark">
+          <SelectItem key={channel.id} value={channel.id}>
+            <div className="flex items-center">
               <ChannelIcon type={channel.type} />
               <span>{channel.name}</span>
             </div>
@@ -45,6 +90,5 @@ export function ChannelSelectDropdown() {
         ))}
       </SelectContent>
     </Select>
-    </div>
-  )
+  );
 }
