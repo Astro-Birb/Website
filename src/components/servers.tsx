@@ -3,22 +3,22 @@ import React from "react";
 const servers = [
   {
     name: "Florida State Roleplay",
-    members: "20,000",
+    members: "22,000",
     logo: "/assets/servers/fsrp.png",
   },
   {
     name: "Soundboard Hub",
-    members: "22,000",
+    members: "28,000",
     logo: "/assets/servers/soundhub.png",
   },
   {
     name: "Broward County Roleplay",
-    members: "13,000",
+    members: "19,000",
     logo: "/assets/servers/broward.png",
   },
   {
     name: "ERM Systems",
-    members: "3,000",
+    members: "4,000",
     logo: "/assets/servers/erm.png",
   },
 ];
@@ -27,7 +27,7 @@ const TrustedServers = () => {
   return (
     <div className=" text-white mt-32">
       <h3 className="text-center text-gray-400 mb-5 text-sm uppercase">
-        Trusted by over <span className="font-bold">8,000</span> Discord servers
+        Trusted by over <span className="font-bold">17,000</span> servers, empowering 3,000,000+ users.
       </h3>
       <div className="flex justify-center space-x-8">
         {servers.map((server, index) => (
