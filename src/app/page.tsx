@@ -17,7 +17,7 @@ export default function Home() {
           />
           <section className="text-center">
             <section className="text-center">
-              <h1 className="text-6xl pb-1 font-extrabold
+              <h1 className="text-6xl pb-2.5 font-extrabold
                      bg-gradient-to-r from-indigo-400 via-indigo-600 to-indigo-300
                      bg-clip-text text-transparent
                      animate-gradient-x">
