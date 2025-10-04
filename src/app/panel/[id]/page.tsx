@@ -1,8 +1,8 @@
 import { auth } from "~/auth"
 import { redirect } from "next/navigation"
 import { cookies } from "next/headers"
-import { InfractionTable } from "@/components/infraction-table"
-import Header from "@/components/header"
+import { InfractionTable } from "@/components/Admin/infraction-table"
+import Header from "@/components/Landing/header";
 import { GradientBackground } from "./gradient-background"
 import  UnauthorizedScreen  from "@/components/unauthorised"
 

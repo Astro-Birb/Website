@@ -4,7 +4,9 @@ import ServerCard from "@/components/server-card"
 import { NoServersFound } from "@/components/no-servers"
 import { cookies } from 'next/headers'
 import { UserAvatar } from "@/components/user-avatar"
-import Header from "@/components/header"
+import Header from "@/components/Landing/header";
+import NotLongerMaintained from "@/components/Servers/NoLongerMaintained"
+import { useState } from "react";
 
 async function getMutualServers() {
   const session = await auth();
@@ -30,6 +32,8 @@ async function getMutualServers() {
 }
 
 export default async function Servers() {
+    const [open, setOpen] = useState(false);
+
   const session = await auth()
   
   if (!session) {
@@ -37,6 +41,9 @@ export default async function Servers() {
   }
 
   const { mutual: servers = [] } = await getMutualServers()
+
+
+
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white">
@@ -63,7 +70,9 @@ export default async function Servers() {
           </div>
         </div>
 
-        {/* Servers Grid */}
+
+        <NotLongerMaintained setOpen={setOpen} open={open}/>
+
         <div className="py-12">
           {servers.length > 0 ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">

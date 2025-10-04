@@ -3,13 +3,13 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "~/auth";
-import { UserMenu } from "./user-menu";
+import { UserMenu } from "../user-menu";
 import { signIn, signOut } from "~/auth";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid"; 
 
-const Header = async () => {
+export const Header = async () => {
   const session = await auth();
 
   return (

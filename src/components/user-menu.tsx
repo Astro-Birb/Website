@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -13,12 +13,14 @@ type UserMenuProps = {
     email?: string | null;
     image?: string | null;
   };
-}
+};
+
+// what the fuck :Sob:
 
 export function UserMenu({ user }: UserMenuProps) {
   if (!user) return null;
 
-  const displayName = user.name || user.email || 'User';
+  const displayName = user.name || user.email || "User";
 
   return (
     <Menu as="div" className="relative inline-block text-left z-10">
@@ -48,7 +50,9 @@ export function UserMenu({ user }: UserMenuProps) {
               {({ active }) => (
                 <Link
                   href="/api/auth/signout"
-                  className={`${active ? "bg-gray-800 text-white" : "text-gray-300"} group flex w-full items-center rounded-md px-4 py-2 text-sm`}
+                  className={`${
+                    active ? "bg-gray-800 text-white" : "text-gray-300"
+                  } group flex w-full items-center rounded-md px-4 py-2 text-sm`}
                 >
                   Sign Out
                 </Link>
@@ -58,7 +62,9 @@ export function UserMenu({ user }: UserMenuProps) {
               {({ active }) => (
                 <Link
                   href="/servers"
-                  className={`${active ? "bg-gray-800 text-white" : "text-gray-300"} group flex w-full items-center rounded-md px-4 py-2 text-sm`}
+                  className={`${
+                    active ? "bg-gray-800 text-white" : "text-gray-300"
+                  } group flex w-full items-center rounded-md px-4 py-2 text-sm`}
                 >
                   Servers
                 </Link>

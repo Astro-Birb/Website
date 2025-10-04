@@ -2,7 +2,7 @@ import { auth } from "~/auth"
 import { cookies } from "next/headers"
 import { notFound, redirect } from "next/navigation"
 import { InfractionDetail } from "./infraction-detail"
-import Header from "@/components/header"
+import Header from "@/components/Landing/header";
 import UnauthorizedScreen from "@/components/unauthorised"
 
 

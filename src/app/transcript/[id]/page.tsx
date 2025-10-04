@@ -2,7 +2,7 @@ import { auth } from "~/auth";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import DiscordTranscript from "./transcript";
-import Header from "@/components/header";
+import Header from "@/components/Landing/header";
 import UnauthorizedScreen from "@/components/unauthorised";
 
 async function GetTranscript(id: string) {

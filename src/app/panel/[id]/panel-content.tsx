@@ -1,8 +1,8 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import { InfractionTable } from "@/components/infraction-table"
-import Header from "@/components/header"
+import { InfractionTable } from "@/components/Admin/infraction-table"
+import Header from "@/components/Landing/header";
 import { useGradient } from '@/app/GradientContext'
 
 interface PanelContentProps {

@@ -1,4 +1,3 @@
-import "../app/globals.css";
 import React from "react";
 export default function Footer() {
   return (
@@ -6,12 +5,11 @@ export default function Footer() {
       <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 ">
         <div className="md:flex md:justify-between ">
           <div className="mb-6 md:mb-0">
-            <a href="https://a-birb-site-xfta.vercel.app" className="flex items-center">
-              <img
-                src="/astro-logo.svg"
-                className="h-8 me-3"
-                alt="Die"
-              />
+            <a
+              href="https://a-birb-site-xfta.vercel.app"
+              className="flex items-center"
+            >
+              <img src="/astro-logo.svg" className="h-8 me-3" alt="Die" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
                 Astro Birb
               </span>
@@ -67,12 +65,18 @@ export default function Footer() {
               </h2>
               <ul className="text-gray-500 dark:text-gray-400 font-medium">
                 <li className="mb-4">
-                  <a href="https://github.com/Astro-Birb/readme/blob/main/privacy.md" className="hover:underline">
+                  <a
+                    href="https://github.com/Astro-Birb/readme/blob/main/privacy.md"
+                    className="hover:underline"
+                  >
                     Privacy Policy
                   </a>
                 </li>
                 <li>
-                  <a href="https://github.com/Astro-Birb/readme/blob/main/tos.md" className="hover:underline">
+                  <a
+                    href="https://github.com/Astro-Birb/readme/blob/main/tos.md"
+                    className="hover:underline"
+                  >
                     Terms &amp; Conditions
                   </a>
                 </li>
@@ -83,8 +87,11 @@ export default function Footer() {
         <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
         <div className="sm:flex sm:items-center sm:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-            © 2024{" "}
-            <a href="https://a-birb-site-xfta.vercel.app" className="hover:underline">
+            © {new Date().getFullYear()}{" "}
+            <a
+              href="https://a-birb-site-xfta.vercel.app"
+              className="hover:underline"
+            >
               Astro Birb
             </a>
             . All Rights Reserved.
