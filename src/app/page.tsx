@@ -6,13 +6,13 @@ import Example from "@/components/Landing/team";
 import Features from "@/components/Landing/features";
 import InvolveUrSelf from "@/components/Landing/Involvement";
 import MainSection from "@/components/Landing/Main";
+import NotLongerMaintained from "@/components/Servers/NoLongerMaintained";
 
 export default function Home() {
   return (
     <div className="dark overflow-auto flex flex-col min-h-screen bg-gradient-to-b from-gray-900 to-black text-white font-sans">
-      <Header />
+      <Header /> <NotLongerMaintained />
       <main className="relative flex-grow md:mt-16 sm:mb-72">
-
         <div className="flex flex-col items-center justify-center h-screen px-4  md:mt-0">
           <MainSection />
 
