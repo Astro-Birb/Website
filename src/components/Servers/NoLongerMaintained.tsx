@@ -13,7 +13,9 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export default function NotLongerMaintained({ open, setOpen }: { open: boolean; setOpen: (open: boolean) => void }) {
+export default function NotLongerMaintained() {
+      const [open, setOpen] = useState(false);
+
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogContent className="border-red-600/20">

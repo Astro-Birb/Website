@@ -32,7 +32,6 @@ async function getMutualServers() {
 }
 
 export default async function Servers() {
-    const [open, setOpen] = useState(false);
 
   const session = await auth()
   
@@ -71,7 +70,7 @@ export default async function Servers() {
         </div>
 
 
-        <NotLongerMaintained setOpen={setOpen} open={open}/>
+        <NotLongerMaintained/>
 
         <div className="py-12">
           {servers.length > 0 ? (

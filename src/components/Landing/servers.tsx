@@ -27,7 +27,8 @@ const TrustedServers = () => {
   return (
     <div className=" text-white mt-32">
       <h3 className="text-center text-gray-400 mb-5 text-sm uppercase">
-        Trusted by over <span className="font-bold">20,000</span> Discord servers
+        Trusted by over <span className="font-bold">20,000</span> Discord
+        servers
       </h3>
       <div className="flex justify-center space-x-8">
         {servers.map((server, index) => (
