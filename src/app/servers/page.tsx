@@ -35,7 +35,7 @@ export default async function Servers() {
   const session = await auth();
 
   if (!session) {
-    redirect("/");
+    redirect("/api/auth/signin");
   }
 
   const { mutual: servers = [] } = await getMutualServers();

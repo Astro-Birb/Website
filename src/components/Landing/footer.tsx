@@ -11,7 +11,7 @@ export default function Footer() {
             >
               <img src="/astro-logo.svg" className="h-8 me-3" alt="Die" />
               <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-                Astro Birb
+                Birb
               </span>
             </a>
           </div>
@@ -92,7 +92,7 @@ export default function Footer() {
               href="https://a-birb-site-xfta.vercel.app"
               className="hover:underline"
             >
-              Astro Birb
+              Birb
             </a>
             . All Rights Reserved.
           </span>
